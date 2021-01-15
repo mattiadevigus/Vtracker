@@ -19,23 +19,37 @@ class Timetable extends Component {
     }
 
     componentDidMount() {
-
         axios.get(`http://${ip}:9000/Activation`, {
             request: "Key"
         }).then((res) => {
-            (res.data === "Activated" ? console.log("Activated") : window.location.replace("/Activation"));
+            (res.data === "Activated" ? console.log("true") : window.location.replace("/Activation"));
         });
 
         axios.post(`http://${ip}:9000/App`, {
             request: 'tutto ok'
         }).then((res) => {
-            console.log(res)
             this.setState({ timetable: res.data.rows, server: res.data.server, track: res.data.track });
         });
     }
 
+    calculateGap(i) {
+        let gapTop = null;
+        let t = this.state.timetable.map((dato, index) => {
+            let tot;
+            let gap = (Number(dato.settore1) + Number(dato.settore2) + Number(dato.settore3));
+            if (gapTop === null) {
+                gapTop = gap;
+                gap = "-";
+            }else{
+                tot = gap - gapTop;
+                gap = "+" + Number(tot).toFixed(3);
+            }
+            return gap
+        })
+        return t[i];
+    }
+
     render() {
-        console.log(this.state)
         return (
             <div className="w3-animate-zoom">
                 <div id="headingData">
@@ -50,11 +64,11 @@ class Timetable extends Component {
                         </div>
                         <div className="col col-md-4 col-lg-1 align-self-center">
                             <Link to="/">
-                                <button className="button"><i style={{ fontSize: "2rem" }} class="fas fa-home button-fix"></i></button>
+                                <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-home button-fix"></i></button>
                             </Link>
                         </div>
                         <div className="col col-md-4 col-lg-1 align-self-center" align="right" >
-                            <button className="button"><i style={{ fontSize: "2rem" }} class="fas fa-trash"></i></button>
+                            <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-trash"></i></button>
                         </div>
                     </div>
                     <hr />
@@ -62,21 +76,20 @@ class Timetable extends Component {
                 <div id="data-Container">
                     <table id="data-table">
                         <thead id="dataHeader">
-                            <tr class="rowHeader">
-                                <th id="posHeader" class="colHeader dataTableCell sticky-col first-col">#</th>
-                                <th id="lastNameHeader" class="colHeader dataTableCell">Pilota</th>
-                                <th id="teamHeader" class="colHeader dataTableCell">Modello macchina</th>
-                                <th id="sec1Header" class="colHeader dataTableCell">S1</th>
-                                <th id="sec2Header" class="colHeader dataTableCell">S2</th>
-                                <th id="sec3Header" class="colHeader dataTableCell">S3</th>
-                                <th id="timeHeader" class="colHeader dataTableCell">Tempo</th>
-                                <th id="gapHeader" class="colHeader dataTableCell">Gap</th>
+                            <tr  className="rowHeader">
+                                <th id="posHeader" className="colHeader dataTableCell sticky-col first-col">#</th>
+                                <th id="lastNameHeader" className="colHeader dataTableCell">Pilota</th>
+                                <th id="teamHeader" className="colHeader dataTableCell">Modello macchina</th>
+                                <th id="sec1Header" className="colHeader dataTableCell">S1</th>
+                                <th id="sec2Header" className="colHeader dataTableCell">S2</th>
+                                <th id="sec3Header" className="colHeader dataTableCell">S3</th>
+                                <th id="timeHeader" className="colHeader dataTableCell">Tempo</th>
+                                <th id="gapHeader" className="colHeader dataTableCell">Gap</th>
                             </tr>
                         </thead>
 
                         {
                             this.state.timetable.map((time, i) => {
-                                let gap = Number(time.settore2)
                                 const link = `/Chart/${time.id}`;
                                 return (
 
@@ -86,10 +99,10 @@ class Timetable extends Component {
                                             <td className="colN dataTableCell lastName"><Link to={link}> {time.nome}  {time.cognome}</Link></td>
                                             <td className="colN dataTableCell team">{time.team}</td>
                                             <td className="colN dataTableCell sec1">{time.settore1}</td>
-                                            <td className="colN dataTableCell sec1">{time.settore2}</td>
-                                            <td className="colN dataTableCell sec1">{time.settore3}</td>
-                                            <td className="colN dataTableCell sec1">{time.tempo}</td>
-                                            <td className="colN dataTableCell sec1">{gap}</td>
+                                            <td className="colN dataTableCell sec2">{time.settore2}</td>
+                                            <td className="colN dataTableCell sec3">{time.settore3}</td>
+                                            <td className="colN dataTableCell time">{time.tempo}</td>
+                                            <td className="colN dataTableCell gap">{this.calculateGap(i)}</td>
                                         </tr>
                                     </tbody>
                                 )

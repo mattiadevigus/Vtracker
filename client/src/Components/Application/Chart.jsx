@@ -12,7 +12,7 @@ class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            path: ''
+            name: "MATTIVERS"
         };
     }
 
@@ -33,8 +33,42 @@ class Chart extends Component {
 
     render() {
         return (
-            <div>
-                <h5>ciao {this.path}</h5>
+            <div className="container">
+                <div className="col">
+                    <div className="presentation-container">
+                        <div className="row">
+                            <div className="col-lg-6">
+                                <div className="chart-info-container">
+                                    <h4>NOME PILOTA : {this.state.name}</h4>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-lg-4">
+                                            <h5 className="red">S1: _TIME</h5>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <h5 className="red">S2: _TIME</h5>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <h5 className="red">S3: _TIME</h5>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div className="row">
+                                        <div className="col-lg-6">
+                                            <h5 className="purple">TIME: _TIME</h5>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <h5>GAP: _TIME</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-6"><canvas id="gap" width="400" height="400"></canvas></div>
+                            <div className="col-lg-6">TRY</div>
+                            <div className="col-lg-6">TRY</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
