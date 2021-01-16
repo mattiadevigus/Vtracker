@@ -8,19 +8,21 @@ const ip = ipv4[0];
 
 let link;
 
-function createChart() {
+function createChart(driver , bestDriver) {
     let ctx = document.getElementById('info').getContext('2d');
-    let mychart = new ChartJS(ctx, {
+    new ChartJS(ctx, {
         type: 'line',
     data: {
         labels: ['Start', 'S1' , 'S2' , 'S3'],
         datasets: [{
-            data: [0.000, 31.532, 22.111, 24.900],
+            
+            data: [0.000, driver.settore1, driver.settore2, driver.settore3],
+            
             backgroundColor: [
                 'rgba(235, 64, 52, 0)',
             ],
             pointBackgroundColor: [
-                'rgba(255, 255, 255, 1)',
+                'rgba(255,0, 0, 1)',
             ],
             borderColor: [
                 'rgba(255, 0, 0, 1)',
@@ -28,7 +30,7 @@ function createChart() {
             borderWidth: 3
         },
         {
-            data: [0.000,32.732, 22.011, 24.900],
+            data: [0.000,bestDriver.settore1, bestDriver.settore2, bestDriver.settore3],
             backgroundColor: [
                 'rgba(255, 255, 255, 0)',
             ],
@@ -78,8 +80,8 @@ class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "_NAME",
-            first: "_FIRST"
+            driver : [],
+            bestDriver: [],
         };
     }
 
@@ -92,12 +94,22 @@ class Chart extends Component {
         this.setState([this.path = id]);
 
         axios.get(`http://${ip}:9000/Chart/${id}`, {
-            request: "Key"
+            request: "Info"
         }).then((res) => {
-            (res.data === "Activated" ? console.log("Activated") : window.location.replace("/Activation"));
+            let infoDriver;
+            let infoFirst;
+            
+            if(Object.keys(res.data).length === 1) {
+                infoDriver = res.data[0];
+            } else {
+                infoDriver = res.data[1];
+            }
+            infoFirst = res.data[0];
+            this.setState({driver: infoDriver ,bestDriver : infoFirst});
+            createChart(this.state.driver , this.state.bestDriver);
         });
 
-        createChart();
+        
     }
 
     render() {
@@ -108,52 +120,46 @@ class Chart extends Component {
                         <div className="row">
                             <div className="col-lg-6">
                                 <div className="chart-info-container">
-                                    <h4>NOME PILOTA : {this.state.name}</h4>
+                                    <h4>Nome del pilota : {this.state.driver.nome} {this.state.driver.cognome}</h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4">
-                                            <h5 className="red">S1: _TIME</h5>
+                                            <h5>{this.state.driver.settore1}</h5>
                                         </div>
                                         <div className="col-lg-4">
-                                            <h5 className="red">S2: _TIME</h5>
+                                            <h5>{this.state.driver.settore2}</h5>
                                         </div>
                                         <div className="col-lg-4">
-                                            <h5 className="red">S3: _TIME</h5>
+                                            <h5>{this.state.driver.settore3}</h5>
                                         </div>
                                     </div>
                                     <hr />
                                     <div className="row">
-                                        <div className="col-lg-6">
-                                            <h5 className="purple">TIME: _TIME</h5>
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <h5>GAP: _TIME</h5>
+                                        <div className="col">
+                                            <h4 className="purple">{this.state.driver.tempo}</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-6">
+                            <div className="col-lg-6 only-desktop">
                                 <div className="chart-info-container">
-                                    <h4>NOME PILOTA : {this.state.first}</h4>
+                                    <h4>Primo pilota : {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4 col-sm-6">
-                                            <h5 className="red">S1: _TIME</h5>
+                                            <h5>{this.state.bestDriver.settore1}</h5>
                                         </div>
                                         <div className="col-lg-4 col-sm-6">
-                                            <h5 className="red">S2: _TIME</h5>
+                                            <h5>{this.state.bestDriver.settore2}</h5>
                                         </div>
                                         <div className="col-lg-4 col-sm-6">
-                                            <h5 className="red">S3: _TIME</h5>
+                                        <h5>{this.state.bestDriver.settore3}</h5>
                                         </div>
                                     </div>
                                     <hr />
                                     <div className="row">
                                         <div className="col">
-                                            <h5 className="purple">TIME: _TIME</h5>
-                                        </div>
-                                        <div className="col">
-                                            <h5>GAP: _TIME</h5>
+                                            <h5 className="purple">{this.state.bestDriver.settore3}</h5>
                                         </div>
                                     </div>
                                 </div>

@@ -63,6 +63,10 @@ and (max-width : 768px) {
     .chart-info-container {
         padding: 5%;
     }
+
+    .only-desktop {
+        display: none;
+    }
 }
 
 /* Tablet */
@@ -102,6 +106,10 @@ and (max-width : 989px) and (min-width : 769px) {
 
     .chart-info-container {
         padding: 5%;
+    }
+
+    .only-desktoponly-desktop {
+        display: none;
     }
 }
 

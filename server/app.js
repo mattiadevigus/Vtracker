@@ -31,13 +31,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-app.get('/Chart/:id', function (req, res) {
-  console.log(req.params.id);
-});
-
 app.post('/', function (req, res) {
   task.updateConfig(req.body.path)
   res.send("Tutto ok");
+});
+
+app.get('/Chart/:id', function (req, res) {
+  console.log(req.params.id);
+  let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Tabella GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Tabella WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC)`;
+  db.all(sql, (err, driver) => {
+    if (err) {
+      throw err;
+    }
+    res.send(driver);
+  }
+  );
 });
 
 app.post('/App', function (req, res) {
@@ -50,7 +58,7 @@ app.post('/App', function (req, res) {
     let info = task.getInfoValue();
     let server = info[0];
     let track = info[1];
-    res.send({rows , server, track});
+    res.send({ rows, server, track });
   });
 });
 
