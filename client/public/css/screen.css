@@ -41,6 +41,7 @@ and (max-width : 768px) {
     }
 
     #data-table td, #data-table th{
+        width: 20px !important;
         padding: 10px;
     }
 

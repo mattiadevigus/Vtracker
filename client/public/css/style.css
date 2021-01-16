@@ -265,3 +265,11 @@ li {
 .purple {
   color: rgb(173, 0, 173);
 }
+
+.driver {
+  border: 2px solid red;
+}
+
+a {
+  text-transform: uppercase;
+}

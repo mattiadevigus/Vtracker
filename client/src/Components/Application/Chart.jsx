@@ -43,6 +43,7 @@ function createChart(driver , bestDriver) {
     },
     options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -71,6 +72,7 @@ function createChart(driver , bestDriver) {
                }
             }
         },
+        maintainAspectRatio:true,
         
     }
     })
@@ -159,7 +161,7 @@ class Chart extends Component {
                                     <hr />
                                     <div className="row">
                                         <div className="col">
-                                            <h5 className="purple">{this.state.bestDriver.settore3}</h5>
+                                            <h4 className="purple">{this.state.bestDriver.tempo}</h4>
                                         </div>
                                     </div>
                                 </div>
