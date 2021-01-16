@@ -30,12 +30,18 @@ body {
 
 canvas {
   position: absolute;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   top: 0;
   left: 0;
-  z-index: -10;
+  right: 0;
+  z-index: -2;
   width: 100vw;
   height: 100vh;
 }
+
 
 .wrapper{
   position: absolute;;
@@ -137,9 +143,16 @@ input::placeholder {
 }
 
 .chart-info-container {
-  padding: 20%;
+  padding: 8%;
+  position: relative;
+  text-align: center;
 }
 
+.chart-graph-container {
+  padding: 18%;
+  position: relative;
+  text-align: center;
+}
 
 /* Other */
 

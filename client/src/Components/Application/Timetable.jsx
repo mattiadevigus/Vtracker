@@ -92,7 +92,6 @@ class Timetable extends Component {
                             this.state.timetable.map((time, i) => {
                                 const link = `/Chart/${time.id}`;
                                 return (
-
                                     <tbody id="dataBody">
                                         <tr className="rowN">
                                             <td className="colN dataTableCell pos sticky-col first-col">{i + 1}</td>
