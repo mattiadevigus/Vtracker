@@ -21,6 +21,9 @@ exports.run = function () {
     setInterval(inizio, 30000);
 }
 
+exports.getInfoValue = () => {
+    return [info.serverName, info.trackName];
+}
 
 exports.updateConfig = (newPath) => {
     console.log(newPath)
@@ -31,12 +34,13 @@ exports.updateConfig = (newPath) => {
     fs.writeFileSync("config.json", data);
 }
 
-exports.createPermission= () => {
+exports.createPermission = (st, v) => {
     let allow = {
-        key: "200"
+        status: st,
+        key: v
     }
     let data = JSON.stringify(allow)
-    fs.writeFileSync("activation.json" , data);
+    fs.writeFileSync("activation.json", data);
     console.log("Fatto");
 }
 
@@ -62,9 +66,7 @@ function inizio() {
     });
 }
 
-exports.getInfoValue = () => {
-    return [info.serverName , info.trackName];
-}
+
 
 // Codice da eseguire per ogni singolo file
 function applicazione(fileName) {

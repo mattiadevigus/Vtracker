@@ -7,13 +7,12 @@ const logger = require('morgan');
 const cors = require("cors");
 const body = require('body-parser');
 const task = require('./modules/tasks');
-const axios = require('axios');
 const sqlite3 = require('sqlite3').verbose();
+const mysql = require('mysql');
 const db = new sqlite3.Database('public/sqlite/time.db');
-
-var indexRouter = require('./routes/index');
-const { info } = require('console');
-var app = express();
+const indexRouter = require('./routes/index');
+const { send } = require('process');
+const app = express();
 
 task.run();
 
@@ -62,28 +61,42 @@ app.post('/App', function (req, res) {
   });
 });
 
-
 app.get('/Activation', function (req, res) {
   let file = JSON.parse(fs.readFileSync('activation.json'));
-  (file.key == 200 ? res.send("Activated") : res.send("Not activated"));
+  (file.status == 200 ? res.send("Activated") : res.send("Not activated"));
 });
 
-// Controllo chiave (Da implementare con un futuro DB)
 app.post('/Activation', function (req, res) {
-  if (req.body.key === "070812") {
-    res.send(true);
-    task.createPermission();
-  } else {
-    res.send(false);
-  }
+  let con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "Vtracker"
+  })
+  con.connect(err => {
+    console.log("connected");
+    con.query(`SELECT * FROM v_keys WHERE v_value = "${req.body.key}" `, (error, results) => {
+      if(error) throw error;
+      let k;
+      k = results[0];
+      if(k === undefined) {
+        res.send(false);
+      } else {
+        console.log(k.v_value);
+        task.createPermission(200, k.v_value);
+        res.send(true)
+      }
+      
+      
+    }
+    );
+  })
 });
 
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
