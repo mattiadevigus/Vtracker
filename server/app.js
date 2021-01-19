@@ -8,13 +8,14 @@ const cors = require("cors");
 const body = require('body-parser');
 const task = require('./modules/tasks');
 const sqlite3 = require('sqlite3').verbose();
-const mysql = require('mysql');
 const db = new sqlite3.Database('public/sqlite/time.db');
+const login = require('./modules/login');
 const indexRouter = require('./routes/index');
-const { send } = require('process');
 const app = express();
 
+/* Avvio server */
 task.run();
+login.createSession();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -61,36 +62,8 @@ app.post('/App', function (req, res) {
   });
 });
 
-app.get('/Activation', function (req, res) {
-  let file = JSON.parse(fs.readFileSync('activation.json'));
-  (file.status == 200 ? res.send("Activated") : res.send("Not activated"));
-});
-
-app.post('/Activation', function (req, res) {
-  let con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "Vtracker"
-  })
-  con.connect(err => {
-    console.log("connected");
-    con.query(`SELECT * FROM v_keys WHERE v_value = "${req.body.key}" `, (error, results) => {
-      if(error) throw error;
-      let k;
-      k = results[0];
-      if(k === undefined) {
-        res.send(false);
-      } else {
-        console.log(k.v_value);
-        task.createPermission(200, k.v_value);
-        res.send(true)
-      }
-      
-      
-    }
-    );
-  })
+app.post('/Login', function (req, res) {
+  console.log(req.body);
 });
 
 app.use(function (req, res, next) {

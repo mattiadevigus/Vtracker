@@ -34,23 +34,13 @@ exports.updateConfig = (newPath) => {
     fs.writeFileSync("config.json", data);
 }
 
-exports.createPermission = (st, v) => {
-    let allow = {
-        status: st,
-        key: v
-    }
-    let data = JSON.stringify(allow)
-    fs.writeFileSync("activation.json", data);
-    console.log("Fatto");
-}
-
-function readJson() {
+readJson = () => {
     let directory = JSON.parse(fs.readFileSync('config.json'));
     directoryPath = directory.path + "\\";
     directoryPath.toString();
 }
 
-function inizio() {
+inizio = () => {
     fs.readdir(directoryPath, function (err, files) {
         if (err) {
             return console.log('Unable to scan directory: ' + err);
@@ -66,10 +56,7 @@ function inizio() {
     });
 }
 
-
-
-// Codice da eseguire per ogni singolo file
-function applicazione(fileName) {
+applicazione = (fileName) => {
     let file = fs.readFileSync(directoryPath + "\\" + fileName)
     obj = (file.toString())
     obj = obj.replace(/\\n/g, "\\n")
@@ -108,8 +95,7 @@ function applicazione(fileName) {
 }
 
 
-
-function cercaTempoMigliore(idmacchina, secondi) {
+cercaTempoMigliore = (idmacchina, secondi) => {
     let i = 0;
     let tempoMigliore = 999999;
     while (obj.laps[i] != undefined) {
@@ -128,7 +114,7 @@ function cercaTempoMigliore(idmacchina, secondi) {
     return tempoMigliore;
 }
 
-function cercaSettoriMigliori(idmacchina, settori) {
+cercaSettoriMigliori = (idmacchina, settori) => {
     let i = 0;
     let set = [];
     while (obj.laps[i] != undefined) {
@@ -144,7 +130,7 @@ function cercaSettoriMigliori(idmacchina, settori) {
     return set;
 }
 
-function calcolaMinuti(secondi) {
+calcolaMinuti = (secondi) => {
     let durata = secondi / 1000;
     durata = durata % (3600);
 
