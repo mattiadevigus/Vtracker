@@ -8,6 +8,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -42,7 +43,6 @@ canvas {
   height: 100vh;
 }
 
-
 .wrapper{
   position: absolute;;
   top:50%;
@@ -68,12 +68,12 @@ a:hover {
 }
 
 button {
-  padding: 10px;
+  padding: 5px;
   border: 1px solid white;
   background-color:#15151e;
   color: white;
   transition: .3s;
-  width: 100%;
+  font-size: 30px;
 }
 
 button:hover {
@@ -81,18 +81,28 @@ border-radius: 10px;
 }
 
 label {
-  color: #aa0000;
+  color: rgb(216, 216, 216);
   margin-bottom: 10px;
   width: 100%;
+  font-size: 22;
 }
 
 input {
   margin: 0 auto;
-  padding: 2%;
+  padding: 10px;
   margin-bottom: 20px;
   background-color: #15151e;
   border: 1px solid whitesmoke;
+  border-radius: .5rem;
   color: white;
+  transition: .3s;
+  width: 70%;
+}
+
+input:focus {
+  background: none;
+  color: #fff;
+  outline: none;
 }
 
 input::placeholder {
@@ -110,9 +120,10 @@ input::placeholder {
   border-bottom-left-radius: 5px;
 }
 
-.standard-container > img {
+.standard-container > img{
   width: 40px;
 }
+
 
 .basic-container {
   text-align: center;
@@ -154,6 +165,16 @@ input::placeholder {
   text-align: center;
 }
 
+.form-container {
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 1rem;
+  padding: 2%;
+  min-width: 40%;
+  max-width: 80%;
+  background-color: #15151e;
+}
+
 /* Other */
 
 .created-by {
@@ -165,7 +186,15 @@ table a {
 }
 
 form button {
-  padding: 5%;
+  padding: 3px;
+}
+
+.form-container button {
+  width: 30%;
+}
+
+.form-container input {
+  text-align: center;
 }
 
 .app-button {
@@ -194,25 +223,6 @@ li {
 
 #logo {
   width: 13vw;
-}
-
-#logo #v {
-  position: relative;
-  top: -62px;
-  color: #ec2424;
-}
-
-#logo {
-  font-family: 'Roboto', sans-serif;
-  font-size: 4rem;
-  line-height: 4rem;
-  font-style: italic;
-}
-
-#logo #v {
-  position: relative;
-  top: -1px;
-  color: #ec2424;
 }
 
 .data {

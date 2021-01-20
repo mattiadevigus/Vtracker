@@ -63,8 +63,8 @@ app.post('/App', function (req, res) {
 });
 
 app.post('/Login', async function (req, res) {
-  const ciao = await login.assignSession(req.body);
-  console.log(ciao);
+  const v = await login.assignSession(req.body);
+  (v === 1 ? res.send(true) : res.send(false));
 });
 
 app.use(function (req, res, next) {

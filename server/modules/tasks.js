@@ -22,6 +22,9 @@ exports.run = function () {
 }
 
 exports.getInfoValue = () => {
+    if(info === undefined) {
+        return ["_server", "_track"];
+    }
     return [info.serverName, info.trackName];
 }
 

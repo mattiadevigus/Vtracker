@@ -19,12 +19,12 @@ and (max-width : 768px) {
         margin-bottom: 20px;
     }
 
-    .button-container {
-        padding: 20px;
+    button {
+        width: 70%;
     }
 
-    .button-container button, form button {
-        min-width: 100%;
+    .button-container {
+        padding: 20px;
     }
 
     #logo {
@@ -68,6 +68,22 @@ and (max-width : 768px) {
     .only-desktop {
         display: none;
     }
+
+    .form-container {
+        width: 80vw;
+    }
+
+    .form-container img {
+        padding: 20px;
+    }
+
+    .form-container > img  {
+        width: 50%;
+    }
+
+    .form-container button {
+        margin-bottom: 10px;
+    }
 }
 
 /* Tablet */
@@ -92,7 +108,7 @@ and (max-width : 989px) and (min-width : 769px) {
     .presentation-container {
         width: 70%;
     }
-
+    
     .sticky-col {
         position: -webkit-sticky;
         position: sticky;
@@ -112,6 +128,10 @@ and (max-width : 989px) and (min-width : 769px) {
     .only-desktoponly-desktop {
         display: none;
     }
+
+    .form-container > img  {
+        width: 50%;
+    }
 }
 
 /* Desktops and laptops ----------- */
@@ -123,6 +143,10 @@ and (min-width : 990px) {
 
     .display-4 {
         font-size: 3.0rem !important;
+    }
+
+    button {
+        width:5rem;
     }
 
     .button-container button {
@@ -137,4 +161,13 @@ and (min-width : 990px) {
     .presentation-container {
         width: 90%;
     }
+
+    .form-container {
+        width: 20vw;
+    }
+
+    .form-container > img  {
+        width: 30%;
+    }
+
 }

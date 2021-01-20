@@ -60,15 +60,20 @@ class Timetable extends Component {
                             <h3 id="serverName" className="data"><span>Server: </span>{this.state.server}</h3>
                             <h4 id="track" className="data"><span>Pista: </span>{this.state.track}</h4>
                         </div>
-                        <div className="col col-md-4 col-lg-6 align-self-center">
+                        <div className="col-sm-5 col-md-2 col-lg-5 align-self-center">
                         </div>
-                        <div className="col col-md-4 col-lg-1 align-self-center">
+                        <div className="col col-md-2 col-lg-1 align-self-center" align="center">
                             <Link to="/">
                                 <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-home button-fix"></i></button>
                             </Link>
                         </div>
-                        <div className="col col-md-4 col-lg-1 align-self-center" align="right" >
-                            <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-trash"></i></button>
+                        <div className="col col-md-2 col-lg-1 align-self-center" align="center">
+                            <button className="button "><i style={{ fontSize: "2rem" }} className="fas fa-trash"></i></button>
+                        </div>
+                        <div className="col col-md-2 col-lg-1 align-self-center" align="center">
+                        <Link to="/Login">
+                            <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-sliders-h align-self-center" ></i></button>
+                            </Link>
                         </div>
                     </div>
                     <hr />

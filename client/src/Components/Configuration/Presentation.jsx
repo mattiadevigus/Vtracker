@@ -25,7 +25,9 @@ function Presentation(props) {
                     <Features icon="fas fa-chart-bar" title="Grafici iterattivi" />
                 </div>
                 <hr />
-                <button onClick={next}>Inizia la configurazione <i className="fas fa-arrow-right"></i> </button>
+                <div className="button-container">
+                <button onClick={next}><i className="fas fa-arrow-right"></i> </button>
+                </div>
             </div>
         </section>)
 }

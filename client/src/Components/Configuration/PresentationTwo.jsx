@@ -70,10 +70,10 @@ class PresentationTwo extends Component {
                         <hr />
                         <div className="row">
                             <div className="col col-sm-12 col-m-12 col-lg-6">
-                                <button onClick={prev}><i className="fas fa-arrow-left"></i> Torna indietro</button>
+                                <button onClick={prev}><i className="fas fa-arrow-left"></i></button>
                             </div>
                             <div className="col col-sm-12 col-m-12 col-lg-6">
-                                <button type="submit" onClick={this.next}>Prosegui <i className="fas fa-arrow-right"></i></button>
+                                <button type="submit" onClick={this.next}><i className="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </form>

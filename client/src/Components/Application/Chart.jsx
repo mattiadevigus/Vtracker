@@ -110,8 +110,6 @@ class Chart extends Component {
             this.setState({driver: infoDriver ,bestDriver : infoFirst});
             createChart(this.state.driver , this.state.bestDriver);
         });
-
-        
     }
 
     render() {
@@ -122,7 +120,7 @@ class Chart extends Component {
                         <div className="row">
                             <div className="col-lg-6">
                                 <div className="chart-info-container">
-                                    <h4>Nome del pilota : {this.state.driver.nome} {this.state.driver.cognome}</h4>
+                                    <h4>Nome del pilota : <span className="red">{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4">
