@@ -62,8 +62,9 @@ app.post('/App', function (req, res) {
   });
 });
 
-app.post('/Login', function (req, res) {
-  console.log(req.body);
+app.post('/Login', async function (req, res) {
+  const ciao = await login.assignSession(req.body);
+  console.log(ciao);
 });
 
 app.use(function (req, res, next) {
