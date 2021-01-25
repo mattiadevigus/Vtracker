@@ -27,6 +27,7 @@ class PresentationTwo extends Component {
         if ('' !== this.state.path) {
             document.getElementById('presentationTree').style.display = "flex";
             document.getElementById('presentationTwo').style.display = "none";
+            localStorage.removeItem("email");
         }
     }
 
@@ -41,7 +42,6 @@ class PresentationTwo extends Component {
         console.log(this.state)
         axios
             .post(`http://${ip}:9000`, this.state)
-            .then((res) => console.log(res))
             .catch(err => {
                 console.error(err);
             });

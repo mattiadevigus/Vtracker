@@ -2,10 +2,10 @@ const createError = require('http-errors');
 const express = require('express');
 const fs = require('fs')
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require("cors");
-const body = require('body-parser');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const task = require('./modules/tasks');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('public/sqlite/time.db');
@@ -15,18 +15,22 @@ const app = express();
 
 /* Avvio server */
 task.run();
-login.createSession();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors({
+  origin: '*',
+  methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+  credentials: true,
+}))
 app.use(logger('dev'));
-app.use(body.urlencoded({ extended: true }));
-app.use(body.json());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -63,9 +67,18 @@ app.post('/App', function (req, res) {
 });
 
 app.post('/Login', async function (req, res) {
+  console.log(req.body);
   const v = await login.assignSession(req.body);
-  (v === 1 ? res.send(true) : res.send(false));
+  if (v === 1) {
+    res.send(true);
+  } else {
+    res.send(false)
+  };
 });
+
+app.get('/Activation', (req, res) => {
+  console.log(req.session);
+})
 
 app.use(function (req, res, next) {
   next(createError(404));

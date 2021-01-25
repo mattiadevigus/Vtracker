@@ -12,6 +12,7 @@
     "jquery": "^3.5.1",
     "public-ip": "^4.0.3",
     "react": "^17.0.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^17.0.1",
     "react-particles-js": "^3.4.1",
     "react-router-dom": "^5.2.0",
@@ -42,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:80"
+  "proxy": "http://localhost:9000"
 }
