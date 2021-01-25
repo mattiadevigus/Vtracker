@@ -69,11 +69,16 @@ a:hover {
 
 button {
   padding: 5px;
-  border: 1px solid white;
-  background-color:#15151e;
-  color: white;
+  border: 1px solid #ffffffea;
+  background-color: #15151e;
+  color: #ffffff7d;
   transition: .3s;
   font-size: 30px;
+}
+
+button:hover {
+  border: 1px solid #fff;
+  color: #ffffff;
 }
 
 button:hover {

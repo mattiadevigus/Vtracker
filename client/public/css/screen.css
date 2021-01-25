@@ -82,6 +82,24 @@ and (max-width : 768px) {
     .form-container button {
         margin-bottom: 10px;
     }
+
+    #data-table thead th {
+        padding: 20px;
+    }
+
+    th, td {
+        font-size: 0.9em;
+    }
+
+    button {
+        padding: 5px;
+        border: 1px solid #ffffff94;
+        background-color: #15151e;
+        color: #ffffff;
+        transition: .3s;
+        font-size: 30px;
+      }
+
 }
 
 /* Tablet */
