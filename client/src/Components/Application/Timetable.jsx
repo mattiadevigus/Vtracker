@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 let ipv4 = window.location.host
 ipv4 = ipv4.split(":");
 const ip = ipv4[0];
@@ -101,7 +102,7 @@ class Timetable extends Component {
                                         <tr className="rowN">
                                             <td className="colN dataTableCell pos sticky-col first-col">{i + 1}</td>
                                             <td className="colN dataTableCell lastName"><Link to={link}> {time.nome}  {time.cognome}</Link></td>
-                                            <td className="colN dataTableCell team">{time.team}</td>
+                                            <td className="colN dataTableCell team"><img src={time.immagine} alt="car"/></td>
                                             <td className="colN dataTableCell sec1">{time.settore1}</td>
                                             <td className="colN dataTableCell sec2">{time.settore2}</td>
                                             <td className="colN dataTableCell sec3">{time.settore3}</td>
@@ -111,7 +112,7 @@ class Timetable extends Component {
                                         <tr className="rowN">
                                             <td className="colN dataTableCell pos sticky-col first-col">{i + 1}</td>
                                             <td className="colN dataTableCell lastName"><Link to={link}> {time.nome}  {time.cognome}</Link></td>
-                                            <td className="colN dataTableCell team">{time.team}</td>
+                                            <td className="colN dataTableCell team"><img src={time.immagine} alt="car" /></td>
                                             <td className="colN dataTableCell sec1">{time.settore1}</td>
                                             <td className="colN dataTableCell sec2">{time.settore2}</td>
                                             <td className="colN dataTableCell sec3">{time.settore3}</td>

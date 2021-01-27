@@ -42,7 +42,7 @@ app.post('/', function (req, res) {
 
 app.get('/Chart/:id', function (req, res) {
   console.log(req.params.id);
-  let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Tabella GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Tabella WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC)`;
+  let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Piloti GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Piloti WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC)`;
   db.all(sql, (err, driver) => {
     if (err) {
       throw err;
@@ -54,7 +54,7 @@ app.get('/Chart/:id', function (req, res) {
 
 app.post('/App', function (req, res) {
   console.log(req.body);
-  let sql = `SELECT *, min(tempo) as tempo FROM Tabella GROUP BY nome,cognome ORDER BY tempo ASC`;
+  let sql = `SELECT *, min(tempo) as tempo FROM Piloti INNER JOIN Macchine ON team = mch_id GROUP BY nome,cognome ORDER BY tempo ASC`;
   db.all(sql, [], (err, rows) => {
     if (err) {
       throw err;

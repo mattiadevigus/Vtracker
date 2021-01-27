@@ -69,9 +69,9 @@ a:hover {
 
 button {
   padding: 5px;
-  border: 1px solid #ffffffea;
+  border: 1px solid #ffffff;
   background-color: #15151e;
-  color: #ffffff7d;
+  color: #ffffffdc;
   transition: .3s;
   font-size: 30px;
 }

@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import ChartJS from 'chart.js';
+import { Link } from 'react-router-dom';
+import * as Zoom from 'chartjs-plugin-zoom';
+import { Bar} from 'react-chartjs-2';
 
 let ipv4 = window.location.host
 ipv4 = ipv4.split(":");
@@ -8,72 +11,80 @@ const ip = ipv4[0];
 
 let link;
 
-function createChart(driver , bestDriver) {
+function createChart(driver, bestDriver) {
     let ctx = document.getElementById('info').getContext('2d');
     new ChartJS(ctx, {
         type: 'line',
-    data: {
-        labels: ['Start', 'S1' , 'S2' , 'S3'],
-        datasets: [{
-            
-            data: [0.000, driver.settore1, driver.settore2, driver.settore3],
-            
-            backgroundColor: [
-                'rgba(235, 64, 52, 0)',
-            ],
-            pointBackgroundColor: [
-                'rgba(255,0, 0, 1)',
-            ],
-            borderColor: [
-                'rgba(255, 0, 0, 1)',
-            ],
-            borderWidth: 3
-        },
-        {
-            data: [0.000,bestDriver.settore1, bestDriver.settore2, bestDriver.settore3],
-            backgroundColor: [
-                'rgba(255, 255, 255, 0)',
-            ],
-            borderColor: [
-                'rgba(255, 255, 255, 1)',
-            ],
-            borderWidth: 3
-        },
-    ]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
+        data: {
+            labels: ['Start', 'S1', 'S2', 'S3'],
+            datasets: [
+                {
+                    data: [0.000, bestDriver.settore1, bestDriver.settore2, bestDriver.settore3],
+                    lineTension: 0,
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 255, 255, 1)',
+                    ],
+                    borderWidth: 3
                 },
-                gridLines: {
-                    color: 'rgba(255,255,255,.2)'
-                  },
-            }],
-            xAxes: [{
-                ticks: {
-                    beginAtZero:true
-                },
-                gridLines: {
-                    color: 'rgba(255,255,255,.2)'
-                  },
-            }]
+                {
+                data: [0.000, driver.settore1, driver.settore2, driver.settore3],
+                lineTension: 0,
+                backgroundColor: [
+                    'rgba(255, 255, 255, 0)',
+                ],
+                pointBackgroundColor: [
+                    'rgba(255,0, 0, 1)',
+                ],
+                borderColor: [
+                    'rgba(255, 0, 0, 1)',
+                ],
+                borderWidth: 3
+            },
+            ]
         },
-        legend: {
-            display: false
-        },
-        tooltips: {
-            callbacks: {
-               label: function(tooltipItem) {
-                      return tooltipItem.yLabel;
-               }
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        color: 'rgba(255,255,255,.2)'
+                    },
+                }],
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        color: 'rgba(255,255,255,.2)'
+                    },
+                }]
+            },
+            pan: {
+                enabled: true,
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
+            },
+            elements: {
+                point:{
+                    backgroundColor: "#fff"
+                }
             }
-        },
-        maintainAspectRatio:true,
-        
-    }
+
+        }
     })
 }
 
@@ -81,7 +92,7 @@ class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            driver : [],
+            driver: [],
             bestDriver: [],
         };
     }
@@ -99,15 +110,15 @@ class Chart extends Component {
         }).then((res) => {
             let infoDriver;
             let infoFirst;
-            
-            if(Object.keys(res.data).length === 1) {
+
+            if (Object.keys(res.data).length === 1) {
                 infoDriver = res.data[0];
             } else {
                 infoDriver = res.data[1];
             }
             infoFirst = res.data[0];
-            this.setState({driver: infoDriver ,bestDriver : infoFirst});
-            createChart(this.state.driver , this.state.bestDriver);
+            this.setState({ driver: infoDriver, bestDriver: infoFirst });
+            createChart(this.state.driver, this.state.bestDriver);
         });
     }
 
@@ -119,7 +130,7 @@ class Chart extends Component {
                         <div className="row">
                             <div className="col-lg-6">
                                 <div className="chart-info-container">
-                                    <h4>Nome del pilota : <span className="red">{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
+                                    <h4>Nome del pilota : <span>{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4">
@@ -138,6 +149,11 @@ class Chart extends Component {
                                             <h4 className="purple">{this.state.driver.tempo}</h4>
                                         </div>
                                     </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <i className="fas fa-circle red"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-6 only-desktop">
@@ -152,7 +168,7 @@ class Chart extends Component {
                                             <h5>{this.state.bestDriver.settore2}</h5>
                                         </div>
                                         <div className="col-lg-4 col-sm-6">
-                                        <h5>{this.state.bestDriver.settore3}</h5>
+                                            <h5>{this.state.bestDriver.settore3}</h5>
                                         </div>
                                     </div>
                                     <hr />
@@ -161,14 +177,22 @@ class Chart extends Component {
                                             <h4 className="purple">{this.state.bestDriver.tempo}</h4>
                                         </div>
                                     </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <i className="fas fa-circle"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-12">
-                                <div className="chart-graph-container">
-                                    <canvas id="info" style={{zIndex:2}}></canvas>
+                                <div className="chart-graph-container white-bg">
+                                    <canvas id="info" style={{ zIndex: 2 }}></canvas>
                                 </div>
                             </div>
                         </div>
+                        <Link to="/App">
+                            <button><i className="fa fa-home"></i></button>
+                        </Link>
                     </div>
                 </div>
             </div>
