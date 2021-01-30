@@ -10,7 +10,7 @@ let info;
 
 exports.run = function () {
     readJson();
-    setInterval(readJson, 30000);
+    setInterval(readJson, 2000);
     console.log("----------------------------------------------------------------------------------------------------------------------------------");
     console.log("||Welcome to VTracker||");
     console.log("To access the webapp, use 'your_ip' or 'localhost'");
@@ -18,7 +18,7 @@ exports.run = function () {
     console.log("REMEMBER!! START FIRST ACC SERVER AND ALLOW RESULTS FUNCTION. FOR MORE, VISIT: https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files");
     console.log("----------------------------------------------------------------------------------------------------------------------------------");
     inizio();
-    setInterval(inizio, 30000);
+    setInterval(inizio, 2000);
 }
 
 exports.getInfoValue = () => {
@@ -35,6 +35,12 @@ exports.updateConfig = (newPath) => {
     }
     let data = JSON.stringify(config);
     fs.writeFileSync("config.json", data);
+}
+
+exports.deleteDB = () => {
+    db.run(`DELETE FROM Piloti` , (err) => {
+        if(err) throw err;
+    } ) ;
 }
 
 readJson = () => {
@@ -89,7 +95,7 @@ applicazione = (fileName) => {
             let settore3 = calcolaMinuti(settori[2]);
             let track = obj.trackName;
             let stringa = nome + ";" + cognome + ";" + tempo + ";" + track
-            db.run(`INSERT INTO tabella(nome,cognome,tempo,team,checkDuplicato,settore1,settore2,settore3) VALUES(?,?,?,?,?,?,?,?)`, [nome, cognome, tempo, idmodello, stringa, settore1, settore2, settore3], function (err) {
+            db.run(`INSERT INTO Piloti(nome,cognome,tempo,team,checkDuplicato,settore1,settore2,settore3) VALUES(?,?,?,?,?,?,?,?)`, [nome, cognome, tempo, idmodello, stringa, settore1, settore2, settore3], (err) => {
             });
         }
         i++;

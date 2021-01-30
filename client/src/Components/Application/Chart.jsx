@@ -2,8 +2,6 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import ChartJS from 'chart.js';
 import { Link } from 'react-router-dom';
-import * as Zoom from 'chartjs-plugin-zoom';
-import { Bar} from 'react-chartjs-2';
 
 let ipv4 = window.location.host
 ipv4 = ipv4.split(":");
@@ -64,9 +62,6 @@ function createChart(driver, bestDriver) {
                         color: 'rgba(255,255,255,.2)'
                     },
                 }]
-            },
-            pan: {
-                enabled: true,
             },
             legend: {
                 display: false

@@ -41,7 +41,6 @@ app.post('/', function (req, res) {
 });
 
 app.get('/Chart/:id', function (req, res) {
-  console.log(req.params.id);
   let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Piloti GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Piloti WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC)`;
   db.all(sql, (err, driver) => {
     if (err) {
@@ -53,7 +52,6 @@ app.get('/Chart/:id', function (req, res) {
 });
 
 app.post('/App', function (req, res) {
-  console.log(req.body);
   let sql = `SELECT *, min(tempo) as tempo FROM Piloti INNER JOIN Macchine ON team = mch_id GROUP BY nome,cognome ORDER BY tempo ASC`;
   db.all(sql, [], (err, rows) => {
     if (err) {
@@ -66,8 +64,7 @@ app.post('/App', function (req, res) {
   });
 });
 
-app.post('/Login', async function (req, res) {
-  console.log(req.body);
+app.post('/Login', async (req, res) => {
   const v = await login.assignSession(req.body);
   if (v === 1) {
     res.send(true);
@@ -76,8 +73,8 @@ app.post('/Login', async function (req, res) {
   };
 });
 
-app.get('/Activation', (req, res) => {
-  console.log(req.session);
+app.post('/Delete' , (req,res) => {
+  task.deleteDB();
 })
 
 app.use(function (req, res, next) {
