@@ -146,8 +146,8 @@ calcolaMinuti = (secondi) => {
     let minuti = parseInt(durata / 60);
     durata = durata % (3600);
     if (minuti == 1) {
-        secondi = durata - 60;
-    } else {
+        secondi = durata - (60 * minuti);
+    }else {
         secondi = durata;
     }
     secondi = secondi.toFixed(3);

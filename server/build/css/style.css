@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Essentials */
+
+body {
+    background-color: #15151e;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #252535; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(119, 0, 0); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(92, 0, 0); 
+}
+
+.center {
+  align-self: center;
+}
+
+canvas {
+  position: absolute;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper{
+  position: absolute;;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%); 
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  transition: .2s;
+}
+
+a:hover {
+  color: #aa0000;
+}
+
+button {
+  padding: 5px;
+  border: 1px solid #ffffff;
+  background-color: #15151e;
+  color: #ffffffdc;
+  transition: .3s;
+  font-size: 30px;
+}
+
+button:hover {
+  border: 1px solid #fff;
+  color: #ffffff;
+}
+
+button:hover {
+border-radius: 10px;
+}
+
+label {
+  color: rgb(216, 216, 216);
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 22;
+}
+
+input {
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #15151e;
+  border: 1px solid whitesmoke;
+  border-radius: .5rem;
+  color: white;
+  transition: .3s;
+  width: 70%;
+}
+
+input:focus {
+  background: none;
+  color: #fff;
+  outline: none;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+/* Container Type */
+
+.standard-container {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid red;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.standard-container > img{
+  width: 40px;
+}
+
+
+.basic-container {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.home-container {
+  width: 40%;
+  align-items: center;
+}
+
+.intro-container {
+  width: 15vw;
+}
+
+.presentation-container {
+  text-align: center;
+  padding: 20px 40px 20px 40px;
+  border: 2px solid white;
+  border-radius: 2%;
+  background-color: #15151e;
+  box-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.button-container {
+  padding: 20px;
+}
+
+.chart-info-container {
+  padding: 8%;
+  position: relative;
+  text-align: center;
+}
+
+.chart-graph-container {
+  padding: 18%;
+  position: relative;
+  text-align: center;
+}
+
+.form-container {
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 1rem;
+  padding: 2%;
+  min-width: 40%;
+  max-width: 80%;
+  background-color: #15151e;
+}
+
+/* Other */
+
+.created-by {
+  color: dimgray;
+}
+
+table a {
+  color: black;
+}
+
+form button {
+  padding: 3px;
+}
+
+.form-container button {
+  width: 30%;
+}
+
+.form-container input {
+  text-align: center;
+}
+
+.app-button {
+  min-width: 200px !important;
+}
+
+hr {
+  color: rgb(255, 255, 255);
+  border-top: none;
+}
+
+li {
+  list-style: none;
+}
+
+.presentation-info {
+  margin-top: 20px;
+}
+
+#headingData {
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+#logo {
+  width: 13vw;
+}
+
+.data {
+  font-weight: 200;
+}
+
+.data span {
+  font-weight: 400;
+  color: #ec2424;
+}
+
+#data-Container {
+  box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  width: 80vw;
+  height: 70vh;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+#data-table {
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: white;
+  color: black;
+  overflow: auto;
+}
+
+#data-table td, #data-table th {
+  text-align: center;
+  padding: 30px;
+}
+
+#data-table thead th {
+  color: #ffffff;
+  background: #8d0c00;
+  font-size: 15px;
+  padding: 30px;
+}
+
+.red {
+  color: #ca1100;
+}
+
+.purple {
+  color: rgb(173, 0, 173);
+}
+
+.driver {
+  border: 2px solid red;
+}
+
+a {
+  text-transform: uppercase;
+}
