@@ -5,6 +5,7 @@
 <ul>
   <li>&#128202 A timetable containing the best overall times of each session</li>
   <li>&#128200 Iteractive graphs</li>
+  <li>&#128736 Config Area</li>
 </ul>
 
 
