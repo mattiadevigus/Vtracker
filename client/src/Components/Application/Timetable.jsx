@@ -65,7 +65,7 @@ class Timetable extends Component {
                             <h3 id="serverName" className="data"><span>Server: </span>{this.state.server}</h3>
                             <h4 id="track" className="data"><span>Pista: </span>{this.state.track}</h4>
                         </div>
-                        <div className="col-sm-5 col-md-2 col-lg-5 align-self-center">
+                        <div className="col-sm-5 col-md-2 col-lg-6 align-self-center">
                         </div>
                         <div className="col col-md-2 col-lg-1 align-self-center" align="center">
                             <Link to="/">
@@ -73,11 +73,8 @@ class Timetable extends Component {
                             </Link>
                         </div>
                         <div className="col col-md-2 col-lg-1 align-self-center" align="center">
-                            <button onClick={this.delete} className="button "><i style={{ fontSize: "2rem" }} className="fas fa-trash"></i></button>
-                        </div>
-                        <div className="col col-md-2 col-lg-1 align-self-center" align="center">
-                            <Link to="/Intro">
-                                <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-sliders-h align-self-center" ></i></button>
+                            <Link to="/Login">
+                                <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-user-cog align-self-center" ></i></button>
                             </Link>
                         </div>
                     </div>
@@ -103,16 +100,6 @@ class Timetable extends Component {
                                 const link = `/Chart/${time.id}`;
                                 return (
                                     <tbody id="dataBody">
-                                        <tr className="rowN">
-                                            <td className="colN dataTableCell pos sticky-col first-col">{i + 1}</td>
-                                            <td className="colN dataTableCell lastName"><Link to={link}> {time.nome}  {time.cognome}</Link></td>
-                                            <td className="colN dataTableCell team"><img src={time.immagine} alt="car" /></td>
-                                            <td className="colN dataTableCell sec1">{time.settore1}</td>
-                                            <td className="colN dataTableCell sec2">{time.settore2}</td>
-                                            <td className="colN dataTableCell sec3">{time.settore3}</td>
-                                            <td className="colN dataTableCell time">{time.tempo}</td>
-                                            <td className="colN dataTableCell gap">{this.calculateGap(i)}</td>
-                                        </tr>
                                         <tr className="rowN">
                                             <td className="colN dataTableCell pos sticky-col first-col">{i + 1}</td>
                                             <td className="colN dataTableCell lastName"><Link to={link}> {time.nome}  {time.cognome}</Link></td>
