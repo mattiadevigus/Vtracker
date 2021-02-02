@@ -1,5 +1,4 @@
-<h2>Vtracker</h2>
-<hr>
+<h3>Vtracker</h3>
 <p>&#128308 A simple tracker for ACC's servers</p>
 <hr>
 <h3>How does it works?</h3>
