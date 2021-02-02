@@ -7,6 +7,16 @@
   <li>&#128200 Iteractive graphs</li>
   <li>&#128736 Config Area</li>
 </ul>
-<h3>Installation on Windows</h3>
-<h3>Installation on Linux</h3>
+<h3>Installation on Windows:</h3>
+<ul>
+  <li>&#128202 A timetable containing the best overall times of each session</li>
+  <li>&#128200 Iteractive graphs</li>
+  <li>&#128736 Config Area</li>
+</ul>
+<h3>Installation on Linux:</h3>
+<ul>
+  <li>&#128202 A timetable containing the best overall times of each session</li>
+  <li>&#128200 Iteractive graphs</li>
+  <li>&#128736 Config Area</li>
+</ul>
 
