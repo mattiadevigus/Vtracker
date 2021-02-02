@@ -10,8 +10,8 @@
 <h3>Preliminaries</h3>
 <ul>
   <li>&#128202 You must first enable the function of saving session data in the results folder. To do this, follow the tutorial on https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files</li>
-  <li>&#128200 Iteractive graphs</li>
-  <li>&#128736 Config Area</li>
+  <li>&#128200 You need free port 9000 (In the next updates the function of being able to choose the port will be introduced)</li>
+  <li>&#128736 To access your app, you can use localhost if you log in from the same computer, otherwise use public ip</li>
 </ul>
 <h3>Installation on Windows:</h3>
 <ul>
