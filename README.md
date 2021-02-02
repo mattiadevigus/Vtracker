@@ -9,7 +9,7 @@
 </ul>
 <h3>Preliminaries</h3>
 <ul>
-  <li>&#128202 A timetable containing the best overall times of each session</li>
+  <li>&#128202 You must first enable the function of saving session data in the results folder. To do this, follow the tutorial on https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files</li>
   <li>&#128200 Iteractive graphs</li>
   <li>&#128736 Config Area</li>
 </ul>
