@@ -29,9 +29,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, 'build/index.html'));
-});
+
 
 app.post('/', function (req, res) {
   task.updateConfig(req.body.path)
@@ -49,8 +47,17 @@ app.get('/Chart/:id', function (req, res) {
   );
 });
 
-app.get('*', function (req, res) {
-  res.redirect('/');
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, 'build/index.html'));
+});
+
+app.post('/Login', async (req, res) => {
+  const v = await login.assignSession(req.body);
+  if (v === 1) {
+    res.send(true);
+  } else {
+    res.send(false)
+  };
 });
 
 app.post('/App', function (req, res) {
@@ -64,15 +71,6 @@ app.post('/App', function (req, res) {
     let track = info[1];
     res.send({ rows, server, track });
   });
-});
-
-app.post('/Login', async (req, res) => {
-  const v = await login.assignSession(req.body);
-  if (v === 1) {
-    res.send(true);
-  } else {
-    res.send(false)
-  };
 });
 
 app.post('/Delete' , (req,res) => {
