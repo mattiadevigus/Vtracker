@@ -31,9 +31,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get('*',(req,res) =>{
+  res.sendFile(path.join(__dirname,'build/index.html'));
+});
+
+app.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, 'build/index.html'));
+});
 
 app.post('/', function (req, res) {
   task.updateConfig(req.body.path)
@@ -76,6 +83,7 @@ app.post('/Login', async (req, res) => {
 app.post('/Delete' , (req,res) => {
   task.deleteDB();
 })
+
 
 app.use(function (req, res, next) {
   next(createError(404));
