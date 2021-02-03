@@ -26,7 +26,12 @@
 </ul>
 <h3>Installation on Linux:</h3>
 <ul>
-  <li>&#128202 A timetable containing the best overall times of each session</li>
-  <li>&#128200 Iteractive graphs</li>
-  <li>&#128736 Config Area</li>
+  <li>&#128200 Download the wine packages for linux. The <b>wine development package</b> is recommended as it is required by the ACC server</li>
+  <li>&#127758 Download the tar.gz and extract it in a folder of your choice</li>
+  <li>&#127758 Start the application using wine ./Vtracker.exe</li>
+  <li>&#9199 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
+  <li>&#9199 Start the application and go to the configuration icon at the top right</li>
+  <li>&#128275 Log in with the credentials obtained by email and start the configuration</li>
+  <li>&#9989 After the configuration, send the url to the pilots. At the end of each session, the timetable will be updated</li>
+  <li>NOTE: The vtracker can also be run in the background on VPS</li>
 </ul>
