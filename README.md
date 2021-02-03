@@ -19,7 +19,7 @@
 <ul>
   <li>&#127758 Download the zip and extract it</li>
   <li>&#9199 Start Vtracker.exe</li>
-  <li>&#10071 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
+  <li>&#9199 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
   <li>&#128200 Start the vtracker and go to the configuration icon at the top right</li>
   <li>&#128200 Log in with the credentials obtained by email and start the configuration</li>
   <li>&#128200 Log in with the credentials obtained by email and start the configuration</li>
