@@ -1,8 +1,6 @@
-const createError = require('http-errors');
 const express = require('express');
 const fs = require('fs')
 const path = require('path');
-const logger = require('morgan');
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -21,15 +19,12 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors())
-app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 app.post('/', function (req, res) {
   task.updateConfig(req.body.path)
@@ -76,15 +71,5 @@ app.post('/App', function (req, res) {
 app.post('/Delete' , (req,res) => {
   task.deleteDB();
 })
-
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 module.exports = app;
