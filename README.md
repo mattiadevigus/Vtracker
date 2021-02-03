@@ -22,6 +22,8 @@
   <li>&#128200 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
   <li>&#128200 Start the vtracker and go to the configuration icon at the top right</li>
   <li>&#128200 Log in with the credentials obtained by email and start the configuration</li>
+  <li>&#128200 Log in with the credentials obtained by email and start the configuration</li>
+  <li>&#128200 After the configuration, send the url to the pilots. At the end of each session, the timetable will be updated</li>
 </ul>
 <h3>Installation on Linux:</h3>
 <ul>
