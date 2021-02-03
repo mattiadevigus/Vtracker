@@ -9,7 +9,7 @@
 </ul>
 <h3>Preliminaries</h3>
 <ul>
-  <li>&#128064 You obviously need a server set up for Vtracker. You will not think of using the Vtracker without a server XD</li>
+  <li>&#128064 You obviously need a ACC server. You will not think of using the Vtracker without a server XD</li>
   <li>&#10071 You must first enable the function of saving session data in the results folder. To do this, follow the tutorial on https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files</li>
   <li>&#10071 After, You must enable the function of saving session data in the results folder. To do this, follow the tutorial on https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files</li>
   <li>&#127379 You need free port 9000 (In the next updates the function of being able to choose the port will be introduced)</li>
@@ -17,9 +17,11 @@
 </ul>
 <h3>Installation on Windows:</h3>
 <ul>
-  <li>&#128202 A timetable containing the best overall times of each session</li>
-  <li>&#128200 Iteractive graphs</li>
-  <li>&#128736 Config Area</li>
+  <li>&#127758 Download the zip and extract it</li>
+  <li>&#128200 Start Vtracker.exe</li>
+  <li>&#128200 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
+  <li>&#128200 Start the vtracker and go to the configuration icon at the top right</li>
+  <li>&#128200 Log in with the credentials obtained by email and start the configuration</li>
 </ul>
 <h3>Installation on Linux:</h3>
 <ul>
