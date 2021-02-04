@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const db = new sqlite3.Database('public/sqlite/time.db');
 const app = express();
+const colors = require('colors');
 
 let directoryPath;
 let info;
@@ -11,12 +12,12 @@ let info;
 exports.run = function () {
     readJson();
     setInterval(readJson, 2000);
-    console.log("----------------------------------------------------------------------------------------------------------------------------------");
-    console.log("||Welcome to VTracker||");
-    console.log("To access the webapp, use 'your_ip' or 'localhost'");
-    console.log("This is a BETA VERSION. Advice and criticisms that lead to a good development of the application are welcome");
-    console.log("REMEMBER!! START FIRST ACC SERVER AND ALLOW RESULTS FUNCTION. FOR MORE, VISIT: https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files");
-    console.log("----------------------------------------------------------------------------------------------------------------------------------");
+    console.log(colors.yellow("----------------------------------------------------------------------------------------------------------------------------------"));
+    console.log(colors.bgRed("||Welcome to VTracker||"));
+    console.log(colors.red("To access the webapp, use 'your_ip:9000' or 'localhost:9000'"));
+    console.log(colors.green("This is a BETA VERSION. Advice and criticisms that lead to a good development of the application are welcome"));
+    console.log(colors.blue("REMEMBER!! START FIRST ACC SERVER AND ALLOW RESULTS FUNCTION. FOR MORE, VISIT: https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files"));
+    console.log(colors.yellow("----------------------------------------------------------------------------------------------------------------------------------"));
     inizio();
     setInterval(inizio, 2000);
 }
@@ -52,11 +53,11 @@ readJson = () => {
 inizio = () => {
     fs.readdir(directoryPath, function (err, files) {
         if (err) {
-            return console.log('Unable to scan directory: ' + err);
+            return /* console.log(colors.red('Unable to scan directory: ' + err)) */;
         }
         if (files.length == 0) {
             console.log("----------------------------------------------------------------------------------------------------------------------------------");
-            return console.log("Server not turned on or results feature not activated.Files not founded");
+            return console.log(colors.red("Server not turned on or results feature not activated.Files not founded"));
         }
         files.forEach(function (file) {
             // Leggi file
