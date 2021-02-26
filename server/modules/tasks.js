@@ -24,7 +24,7 @@ exports.run = function () {
 
 exports.getInfoValue = () => {
     if(info === undefined) {
-        return ["_server", "_track"];
+        return ["Server", "Track"];
     }
     return [info.serverName, info.trackName];
 }
@@ -53,7 +53,7 @@ readJson = () => {
 inizio = () => {
     fs.readdir(directoryPath, function (err, files) {
         if (err) {
-            return /* console.log(colors.red('Unable to scan directory: ' + err)) */;
+            return console.log(colors.red('Unable to scan directory: ' + err));
         }
         if (files.length == 0) {
             console.log("----------------------------------------------------------------------------------------------------------------------------------");

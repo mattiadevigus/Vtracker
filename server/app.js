@@ -1,3 +1,4 @@
+const http = require('http');
 const express = require('express');
 const fs = require('fs')
 const path = require('path');
@@ -19,7 +20,6 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
@@ -46,14 +46,14 @@ app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
-app.post('/Login', async (req, res) => {
+/* app.post('/Login', async (req, res) => {
   const v = await login.assignSession(req.body);
   if (v === 1) {
     res.send(true);
   } else {
     res.send(false)
   };
-});
+}); */
 
 app.post('/App', function (req, res) {
   let sql = `SELECT *, min(tempo) as tempo FROM Piloti INNER JOIN Macchine ON team = mch_id GROUP BY nome,cognome ORDER BY tempo ASC`;
@@ -72,4 +72,5 @@ app.post('/Delete' , (req,res) => {
   task.deleteDB();
 })
 
-module.exports = app;
+const server = http.createServer(app);
+server.listen(9000);

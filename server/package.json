@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./app.js",
     "server": "nodemon ./bin/www",
     "client": "npm start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -26,6 +26,6 @@
     "mysql2": "^2.2.5",
     "public-ip": "^4.0.3",
     "reload": "^3.1.1",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.2"
   }
 }
