@@ -61,20 +61,15 @@ class Timetable extends Component {
                     <img id="logo" src="images/v_logo.png" alt="logo" srcSet="images/v_logo.png" />
                     <hr />
                     <div className="row ">
-                        <div className="col col-md-4 col-lg-4">
+                        <div className="col col-md-6 col-lg-4">
                             <h3 id="serverName" className="data"><span>Server: </span>{this.state.server}</h3>
-                            <h4 id="track" className="data"><span>Pista: </span>{this.state.track}</h4>
+                            <h4 id="track" className="data"><span>Track: </span>{this.state.track}</h4>
                         </div>
-                        <div className="col-sm-5 col-md-2 col-lg-6 align-self-center">
+                        <div className="col-md-4 col-lg-7 align-self-center">
                         </div>
                         <div className="col col-md-2 col-lg-1 align-self-center" align="center">
                             <Link to="/">
-                                <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-home button-fix"></i></button>
-                            </Link>
-                        </div>
-                        <div className="col col-md-2 col-lg-1 align-self-center" align="center">
-                            <Link to="/Login">
-                                <button className="button"><i style={{ fontSize: "2rem" }} className="fas fa-user-cog align-self-center" ></i></button>
+                                <button className="button-nav"><i style={{ fontSize: "2rem" }} className="fas fa-home button-fix"></i></button>
                             </Link>
                         </div>
                     </div>
@@ -85,12 +80,12 @@ class Timetable extends Component {
                         <thead id="dataHeader">
                             <tr className="rowHeader">
                                 <th id="posHeader" className="colHeader dataTableCell sticky-col first-col">#</th>
-                                <th id="lastNameHeader" className="colHeader dataTableCell">Pilota</th>
-                                <th id="teamHeader" className="colHeader dataTableCell">Modello macchina</th>
+                                <th id="lastNameHeader" className="colHeader dataTableCell">Driver</th>
+                                <th id="teamHeader" className="colHeader dataTableCell">Car Model</th>
                                 <th id="sec1Header" className="colHeader dataTableCell">S1</th>
                                 <th id="sec2Header" className="colHeader dataTableCell">S2</th>
                                 <th id="sec3Header" className="colHeader dataTableCell">S3</th>
-                                <th id="timeHeader" className="colHeader dataTableCell">Tempo</th>
+                                <th id="timeHeader" className="colHeader dataTableCell">Time</th>
                                 <th id="gapHeader" className="colHeader dataTableCell">Gap</th>
                             </tr>
                         </thead>

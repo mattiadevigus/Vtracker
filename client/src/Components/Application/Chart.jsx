@@ -125,7 +125,7 @@ class Chart extends Component {
                         <div className="row">
                             <div className="col-lg-6">
                                 <div className="chart-info-container">
-                                    <h4>Nome del pilota : <span>{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
+                                    <h4>Driver name: <span>{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4">
@@ -153,7 +153,7 @@ class Chart extends Component {
                             </div>
                             <div className="col-lg-6 only-desktop">
                                 <div className="chart-info-container">
-                                    <h4>Primo pilota : {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
+                                    <h4>First driver name : {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4 col-sm-6">

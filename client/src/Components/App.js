@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './Home';
-import Intro from './Configuration/Intro';
 import Application from './Application/Timetable';
-import Login from './Activation/Login';
 import Particles from 'react-particles-js';
 import Chart from './Application/Chart';
+/* import Intro from './Configuration/Intro';
+import Login from './Activation/Login'; */
 
 class App extends React.Component {
   constructor(props) {
@@ -31,8 +31,8 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/"  component={() => <Home />} />
-            <Route path="/Login" component={() => <Login />} />
-            <Route path="/Intro" component={() => <Intro />} />
+            {/* <Route path="/Login" component={() => <Login />} />
+            <Route path="/Intro" component={() => <Intro />} /> */}
             <Route path="/App" component={() => <Application />} />
             <Route path="/Chart/:id" component={() => <Chart />} />
           </Switch>

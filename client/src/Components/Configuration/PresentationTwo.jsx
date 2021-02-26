@@ -27,7 +27,6 @@ class PresentationTwo extends Component {
         if ('' !== this.state.path) {
             document.getElementById('presentationTree').style.display = "flex";
             document.getElementById('presentationTwo').style.display = "none";
-            localStorage.removeItem("email");
         }
     }
 
