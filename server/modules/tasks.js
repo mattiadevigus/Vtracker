@@ -4,47 +4,52 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const db = new sqlite3.Database('public/sqlite/time.db');
 const app = express();
-const colors = require('colors');
+
+const bash = require('./bash');
+const timing = require('./timing');
 
 let directoryPath;
 let info;
 
-exports.run = function () {
-    readJson();
-    setInterval(readJson, 2000);
-    console.log(colors.yellow("----------------------------------------------------------------------------------------------------------------------------------"));
-    console.log(colors.bgRed("||Welcome to VTracker||"));
-    console.log(colors.red("To access the webapp, use 'your_ip:9000' or 'localhost:9000'"));
-    console.log(colors.green("This is a BETA VERSION. Advice and criticisms that lead to a good development of the application are welcome"));
-    console.log(colors.blue("REMEMBER!! START FIRST ACC SERVER AND ALLOW RESULTS FUNCTION. FOR MORE, VISIT: https://www.acc-wiki.info/wiki/Server_Configuration#Result_Files"));
-    console.log(colors.yellow("----------------------------------------------------------------------------------------------------------------------------------"));
-    inizio();
-    setInterval(inizio, 2000);
-}
-
-exports.getInfoValue = () => {
-    if(info === undefined) {
-        return ["Server", "Track"];
+class Tasks {
+    run = () => {
+        readDir();
+        setInterval(readDir, 2000);
+        bash.WelcomeMessage(this.getPort());
+        inizio();
+        setInterval(inizio, 2000);
     }
-    return [info.serverName, info.trackName];
-}
 
-exports.updateConfig = (newPath) => {
-    console.log(newPath)
-    let config = {
-        path: newPath
+    getInfoValue = () => {
+        if (info === undefined) {
+            return ["Server", "Track"];
+        }
+        return [info.serverName, info.trackName];
     }
-    let data = JSON.stringify(config);
-    fs.writeFileSync("config.json", data);
+
+    updateConfig = (newPath) => {
+        console.log(newPath)
+        let config = {
+            path: newPath
+        }
+        let data = JSON.stringify(config);
+        fs.writeFileSync("config.json", data);
+    }
+
+    deleteDB = () => {
+        db.run(`DELETE FROM Piloti`, (err) => {
+            if (err) throw err;
+        });
+    }
+
+    getPort = () => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        return directory.port;
+    }
 }
 
-exports.deleteDB = () => {
-    db.run(`DELETE FROM Piloti` , (err) => {
-        if(err) throw err;
-    } ) ;
-}
 
-readJson = () => {
+readDir = () => {
     let directory = JSON.parse(fs.readFileSync('config.json'));
     directoryPath = directory.path + "\\";
     directoryPath.toString();
@@ -60,7 +65,6 @@ inizio = () => {
             return console.log(colors.red("Server not turned on or results feature not activated.Files not founded"));
         }
         files.forEach(function (file) {
-            // Leggi file
             info = applicazione(file);
         });
     });
@@ -87,76 +91,32 @@ applicazione = (fileName) => {
         let cognome = pilota.currentDriver["lastName"];
         let idmacchina = pilota.car["carId"];
         let idmodello = pilota.car["carModel"];
-        let secondi = cercaTempoMigliore(idmacchina);
-        let tempo = calcolaMinuti(secondi);
-        let settori = cercaSettoriMigliori(idmacchina, secondi);
+        let secondi = timing.cercaTempoMigliore(idmacchina);
+        let tempo = timing.calcolaMinuti(secondi);
+        let settori = timing.cercaSettoriMigliori(idmacchina, secondi);
         if (tempo !== "0.000") {
-            let settore1 = calcolaMinuti(settori[0]);
-            let settore2 = calcolaMinuti(settori[1]);
-            let settore3 = calcolaMinuti(settori[2]);
+            let settore1 = timing.calcolaMinuti(settori[0]);
+            let settore2 = timing.calcolaMinuti(settori[1]);
+            let settore3 = timing.calcolaMinuti(settori[2]);
             let track = obj.trackName;
             let stringa = nome + ";" + cognome + ";" + tempo + ";" + track
-            db.run(`INSERT INTO Piloti(nome,cognome,tempo,team,checkDuplicato,settore1,settore2,settore3) VALUES(?,?,?,?,?,?,?,?)`, [nome, cognome, tempo, idmodello, stringa, settore1, settore2, settore3], (err) => {
-            });
+            db.run(`INSERT INTO Piloti(nome,cognome,tempo,team,checkDuplicato,settore1,settore2,settore3) VALUES(?,?,?,?,?,?,?,?)`, [nome, cognome, tempo, idmodello, stringa, settore1, settore2, settore3], (err) => { });
         }
         i++;
     }
-    return obj
+    return obj;
 }
 
+module.exports = new Tasks();
 
-cercaTempoMigliore = (idmacchina, secondi) => {
-    let i = 0;
-    let tempoMigliore = 999999;
-    while (obj.laps[i] != undefined) {
-        if (idmacchina === obj.laps[i].carId) {
-            if (obj.laps[i].isValidForBest === true) {
-                if (obj.laps[i].laptime < tempoMigliore) {
-                    tempoMigliore = obj.laps[i].laptime;
-                }
-            }
-        }
-        i++
-    }
-    if (tempoMigliore === 999999) {
-        tempoMigliore = 0;
-    }
-    return tempoMigliore;
-}
 
-cercaSettoriMigliori = (idmacchina, settori) => {
-    let i = 0;
-    let set = [];
-    while (obj.laps[i] != undefined) {
-        if (idmacchina === obj.laps[i].carId) {
-            if (obj.laps[i].isValidForBest === true) {
-                if (obj.laps[i].laptime === settori) {
-                    set = obj.laps[i].splits
-                }
-            }
-        }
-        i++
-    }
-    return set;
-}
 
-calcolaMinuti = (secondi) => {
-    let durata = secondi / 1000;
-    durata = durata % (3600);
 
-    let minuti = parseInt(durata / 60);
-    durata = durata % (3600);
-    if (minuti == 1) {
-        secondi = durata - (60 * minuti);
-    }else {
-        secondi = durata;
-    }
-    secondi = secondi.toFixed(3);
-    let tot;
-    if (minuti == 0) {
-        tot = secondi;
-    } else {
-        tot = minuti + ":" + secondi;
-    }
-    return tot;
-}
+
+
+
+
+
+
+
+
