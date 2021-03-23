@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-
-let ipv4 = window.location.host
-ipv4 = ipv4.split(":");
-const ip = ipv4[0];
-
+import axios from 'axios';
+import Base from '../../Modules/Base'
 
 class Timetable extends Component {
     constructor(props) {
@@ -14,16 +9,17 @@ class Timetable extends Component {
 
         this.state = {
             timetable: [],
-            server: "_server",
-            track: "_name"
+            server: "Server",
+            track: "Track Name"
         };
     }
 
     componentDidMount() {
-        axios.post(`http://${ip}:9000/App`, {
+        axios.post(`http://${Base.getIp()}:9000/App`, {
             request: 'tutto ok'
         }).then((res) => {
-            this.setState({ timetable: res.data.rows, server: res.data.server, track: res.data.track });
+            console.log(res.data.server);
+            this.setState({ timetable: res.data.rows, server: res.data.server, track: Base.getFormattedTrackName(res.data.track) });
         });
     }
 
@@ -44,16 +40,6 @@ class Timetable extends Component {
         return t[i];
     }
 
-    delete = () => {
-        var retVal = window.confirm("Sei sicuro? Verranno cancellati tutti i tempi dal database. I file contenuti nella cartella results, dovranno essere eliminati manualmente");
-        if (retVal === true) {
-            axios.post(`http://${ip}:9000/Delete`, {
-                request: 'delete'
-            })
-            window.location.replace("/Intro");
-        }
-    }
-
     render() {
         return (
             <div className="w3-animate-zoom">
@@ -62,10 +48,10 @@ class Timetable extends Component {
                     <hr />
                     <div className="row ">
                         <div className="col col-md-6 col-lg-4">
-                            <h3 id="serverName" className="data"><span>Server: </span>{this.state.server}</h3>
-                            <h4 id="track" className="data"><span>Track: </span>{this.state.track}</h4>
+                            <h3 id="serverName" className="data"><i class="fas fa-server"></i> <span id="titleState"> Server: </span> <span id="stateText">{this.state.server}</span></h3>
+                            <h3 id="track" className="data"><i className="fas fa-road"></i> <span id="titleState"> Track: </span> <span id="stateText">{this.state.track}</span></h3>
                         </div>
-                        <div className="col-md-4 col-lg-7 align-self-center">
+                        <div className="col col-md-4 col-lg-7 align-self-center">
                         </div>
                         <div className="col col-md-2 col-lg-1 align-self-center" align="center">
                             <Link to="/">
@@ -89,7 +75,6 @@ class Timetable extends Component {
                                 <th id="gapHeader" className="colHeader dataTableCell">Gap</th>
                             </tr>
                         </thead>
-
                         {
                             this.state.timetable.map((time, i) => {
                                 const link = `/Chart/${time.id}`;
@@ -107,10 +92,12 @@ class Timetable extends Component {
                                         </tr>
                                     </tbody>
                                 )
-                            })}
+                            })
+                        }
                     </table>
                 </div>
-            </div>)
+            </div>
+        )
     }
 }
 

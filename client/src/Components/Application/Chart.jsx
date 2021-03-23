@@ -2,10 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import ChartJS from 'chart.js';
 import { Link } from 'react-router-dom';
-
-let ipv4 = window.location.host
-ipv4 = ipv4.split(":");
-const ip = ipv4[0];
+import Base from '../../Modules/Base'
 
 let link;
 
@@ -100,7 +97,7 @@ class Chart extends Component {
 
         this.setState([this.path = id]);
 
-        axios.get(`http://${ip}:9000/Chart/${id}`, {
+        axios.get(`http://${Base.getIp()}:9000/Chart/${id}`, {
             request: "Info"
         }).then((res) => {
             let infoDriver;
