@@ -182,6 +182,15 @@ input::placeholder {
   background-color: #15151e;
 }
 
+.feed-container {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: 0;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 /* Other */
 
 .created-by {
@@ -294,6 +303,15 @@ li {
 
 a {
   text-transform: uppercase;
+}
+
+.feed-container a{
+  color: rgb(143, 143, 143);
+}
+
+.feed-container a:hover{
+  color: #aa0000;
+  transition: .3s;
 }
 
 

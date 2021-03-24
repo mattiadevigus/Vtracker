@@ -25,19 +25,19 @@ function createChart(driver, bestDriver) {
                     borderWidth: 3
                 },
                 {
-                data: [0.000, driver.settore1, driver.settore2, driver.settore3],
-                lineTension: 0,
-                backgroundColor: [
-                    'rgba(255, 255, 255, 0)',
-                ],
-                pointBackgroundColor: [
-                    'rgba(255,0, 0, 1)',
-                ],
-                borderColor: [
-                    'rgba(255, 0, 0, 1)',
-                ],
-                borderWidth: 3
-            },
+                    data: [0.000, driver.settore1, driver.settore2, driver.settore3],
+                    lineTension: 0,
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0)',
+                    ],
+                    pointBackgroundColor: [
+                        'rgba(255,0, 0, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 0, 0, 1)',
+                    ],
+                    borderWidth: 3
+                },
             ]
         },
         options: {
@@ -71,11 +71,10 @@ function createChart(driver, bestDriver) {
                 }
             },
             elements: {
-                point:{
+                point: {
                     backgroundColor: "#fff"
                 }
             }
-
         }
     })
 }
@@ -88,7 +87,6 @@ class Chart extends Component {
             bestDriver: [],
         };
     }
-
 
     componentDidMount() {
         link = window.location.href;
@@ -120,37 +118,10 @@ class Chart extends Component {
                 <div className="col">
                     <div className="presentation-container">
                         <div className="row">
-                            <div className="col-lg-6">
-                                <div className="chart-info-container">
-                                    <h4>Driver name: <span>{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
-                                    <hr />
-                                    <div className="row">
-                                        <div className="col-lg-4">
-                                            <h5>{this.state.driver.settore1}</h5>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <h5>{this.state.driver.settore2}</h5>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <h5>{this.state.driver.settore3}</h5>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div className="row">
-                                        <div className="col">
-                                            <h4 className="purple">{this.state.driver.tempo}</h4>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col">
-                                            <i className="fas fa-circle red"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div className="col-lg-6 only-desktop">
                                 <div className="chart-info-container">
-                                    <h4>First driver name : {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
+                                    <h4>First driver: {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4 col-sm-6">
@@ -176,6 +147,34 @@ class Chart extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-lg-6">
+                                <div className="chart-info-container">
+                                    <h4>Selected Driver: <span>{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-lg-4">
+                                            <h5>{this.state.driver.settore1}</h5>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <h5>{this.state.driver.settore2}</h5>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <h5>{this.state.driver.settore3}</h5>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col">
+                                            <h4 className="purple">{this.state.driver.tempo}</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <i className="fas fa-circle red"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div className="col-lg-12">
                                 <div className="chart-graph-container white-bg">
                                     <canvas id="info" style={{ zIndex: 2 }}></canvas>
@@ -190,7 +189,6 @@ class Chart extends Component {
             </div>
         )
     }
-
 }
 
 export default Chart
