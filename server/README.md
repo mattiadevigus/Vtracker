@@ -17,9 +17,9 @@
 <h3>Installation on Windows:</h3>
 <ul>
   <li>&#127758 Download the zip and extract it</li>
+  <li>&#128736 Open the "config.json" file and enter the file path of the results folder and the port of your choice for the server</li>
   <li>&#9199 Start Vtracker.exe</li>
-  <li>&#9199 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
-  <li>&#128736 Open the "config.json" file and enter the file path of the results folder</li>
+  <li>&#9199 Start your browser and log into the vtracker using localhost: yourport or "your_ip": yourport</li>
   <li>&#9989 After the configuration, send the url to the drivers. At the end of each session, the timetable will be updated</li>
 </ul>
 <h3>Installation on Linux:</h3>
