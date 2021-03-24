@@ -23,8 +23,8 @@ function Navigation() {
                     </div>
                 </div>
             </div>
-            <div className="feed-container w3-animate-opacity" align="center">
-                <h5>Leave a review on <a target="_blank" rel="noreferrer" href="https://www.racedepartment.com/downloads/vtracker-timetable-for-acc-servers.40161/">RaceDepartment</a></h5>
+            <div className="feed-container w3-animate-opacity only-desktop" align="center">
+                <h5>Leave a review on <a target="_blank" rel="noreferrer" href="https://www.racedepartment.com/downloads/vtracker-timetable-for-acc-servers.40161/reviews">RaceDepartment</a></h5>
             </div>
         </div>
     )

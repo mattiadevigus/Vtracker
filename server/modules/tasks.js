@@ -51,10 +51,9 @@ class Tasks {
 
     readOpen = () => {
         let directory = JSON.parse(fs.readFileSync('config.json'));
-        let value = directory.openOnStart;
+        let value = directory.openBrowserOnStart;
         value == true ? open(`http://localhost:${this.getPort()}`) : console.log("No open browser allowed");
     }
-
 }
 
 readDir = () => {
