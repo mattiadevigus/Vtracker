@@ -24,7 +24,7 @@ function Navigation() {
                 </div>
             </div>
             <div className="feed-container w3-animate-opacity" align="center">
-                <h5>Leave a release on <a href="https://www.racedepartment.com/downloads/vtracker-timetable-for-acc-servers.40161/">RaceDepartment</a></h5>
+                <h5>Leave a review on <a target="_blank" rel="noreferrer" href="https://www.racedepartment.com/downloads/vtracker-timetable-for-acc-servers.40161/">RaceDepartment</a></h5>
             </div>
         </div>
     )

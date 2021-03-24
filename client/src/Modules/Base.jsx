@@ -10,6 +10,12 @@ class Base {
         return name[0];
     }
 
+    getPort = () => {
+        let ipv4 = window.location.host;
+        let port = ipv4.split(":");
+        console.log(port)
+        return port[1];
+    }
 }
 
 export default new Base();

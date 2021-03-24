@@ -15,7 +15,7 @@ class Timetable extends Component {
     }
 
     componentDidMount() {
-        axios.post(`http://${Base.getIp()}:9000/App`, {
+        axios.post(`http://${Base.getIp()}:${Base.getPort()}/App`, {
             request: 'tutto ok'
         }).then((res) => {
             console.log(res.data.server);
@@ -48,7 +48,7 @@ class Timetable extends Component {
                     <hr />
                     <div className="row ">
                         <div className="col col-md-6 col-lg-4">
-                            <h3 id="serverName" className="data"><i class="fas fa-server"></i> <span id="titleState"> Server: </span> <span id="stateText">{this.state.server}</span></h3>
+                            <h3 id="serverName" className="data"><i className="fas fa-server"></i> <span id="titleState"> Server: </span> <span id="stateText">{this.state.server}</span></h3>
                             <h3 id="track" className="data"><i className="fas fa-road"></i> <span id="titleState"> Track: </span> <span id="stateText">{this.state.track}</span></h3>
                         </div>
                         <div className="col col-md-4 col-lg-7 align-self-center">

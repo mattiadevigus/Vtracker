@@ -95,7 +95,7 @@ class Chart extends Component {
 
         this.setState([this.path = id]);
 
-        axios.get(`http://${Base.getIp()}:9000/Chart/${id}`, {
+        axios.get(`http://${Base.getIp()}:${Base.getPort()}/Chart/${id}`, {
             request: "Info"
         }).then((res) => {
             let infoDriver;
@@ -121,7 +121,7 @@ class Chart extends Component {
                             
                             <div className="col-lg-6 only-desktop">
                                 <div className="chart-info-container">
-                                    <h4>First driver: {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
+                                    <h4><span id="titleState">Best driver:</span> {this.state.bestDriver.nome} {this.state.bestDriver.cognome}</h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4 col-sm-6">
@@ -149,7 +149,7 @@ class Chart extends Component {
                             </div>
                             <div className="col-lg-6">
                                 <div className="chart-info-container">
-                                    <h4>Selected Driver: <span>{this.state.driver.nome} {this.state.driver.cognome}</span></h4>
+                                    <h4><span id="titleState">Selected Driver: </span> {this.state.driver.nome} {this.state.driver.cognome}</h4>
                                     <hr />
                                     <div className="row">
                                         <div className="col-lg-4">
