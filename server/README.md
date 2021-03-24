@@ -25,9 +25,9 @@
 <ul>
   <li>&#127758 Download the wine packages for linux. The <b>wine development package</b> is recommended as it is required by the ACC server</li>
   <li>&#127758 Download the tar.gz and extract it in a folder of your choice</li>
+  <li>&#128736 Open the "config.json" file and enter the file path of the results folder</li>
   <li>&#9199 Start the application using wine ./Vtracker.exe</li>
   <li>&#9199 Start your browser and log into the vtracker using localhost: 9000 or "your_ip": 9000</li>
-  <li>&#128736 Open the "config.json" file and enter the file path of the results folder</li>
   <li>&#9989 After the configuration, send the url to the drivers. At the end of each session, the timetable will be updated</li>
   <li>NOTE: The vtracker can also be run in the background on VPS</li>
 </ul>
