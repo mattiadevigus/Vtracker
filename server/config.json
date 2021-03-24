@@ -1,4 +1,5 @@
 {
     "path": "F:\\SteamLibrary\\steamapps\\common\\Assetto Corsa Competizione Dedicated Server\\server\\results",
-    "port": 9001
+    "port": 9000,
+    "openOnStart": true
 }

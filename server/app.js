@@ -10,6 +10,7 @@ const db = new sqlite3.Database('public/sqlite/time.db');
 const app = express();
 
 task.run();
+task.readOpen();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

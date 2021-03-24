@@ -3,7 +3,9 @@ const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const db = new sqlite3.Database('public/sqlite/time.db');
+const open = require('open');
 const app = express();
+
 
 const bash = require('./bash');
 const timing = require('./timing');
@@ -18,13 +20,6 @@ class Tasks {
         bash.WelcomeMessage(this.getPort());
         inizio();
         setInterval(inizio, 2000);
-    }
-
-    getInfoValue = () => {
-        if (info === undefined) {
-            return ["Server", "Track"];
-        }
-        return [info.serverName, info.trackName];
     }
 
     updateConfig = (newPath) => {
@@ -46,8 +41,21 @@ class Tasks {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         return directory.port;
     }
-}
 
+    getInfoValue = () => {
+        if (info === undefined) {
+            return ["Server", "Track"];
+        }
+        return [info.serverName, info.trackName];
+    }
+
+    readOpen = () => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        let value = directory.openOnStart;
+        value == true ? open(`http://localhost:${this.getPort()}`) : console.log("No open browser allowed");
+    }
+
+}
 
 readDir = () => {
     let directory = JSON.parse(fs.readFileSync('config.json'));
