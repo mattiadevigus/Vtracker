@@ -17,7 +17,7 @@ class Tasks {
     run = () => {
         readDir();
         setInterval(readDir, 2000);
-        bash.WelcomeMessage(this.getPort());
+        bash.welcomeMessage(this.getPort());
         inizio();
         setInterval(inizio, 2000);
     }
@@ -52,7 +52,7 @@ class Tasks {
     readOpen = () => {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         let value = directory.openBrowserOnStart;
-        value == true ? open(`http://localhost:${this.getPort()}`) : console.log("No open browser allowed");
+        value == true ? open(`http://localhost:${this.getPort()}`) : bash.settingsMessage();
     }
 }
 
