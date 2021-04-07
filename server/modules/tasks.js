@@ -6,7 +6,6 @@ const db = new sqlite3.Database('public/sqlite/time.db');
 const open = require('open');
 const app = express();
 
-
 const bash = require('./bash');
 const timing = require('./timing');
 
@@ -102,9 +101,9 @@ applicazione = (fileName) => {
         let tempo = timing.calcolaMinuti(secondi);
         let settori = timing.cercaSettoriMigliori(idmacchina, secondi);
         if (tempo !== "0.000") {
-            let settore1 = timing.calcolaMinuti(settori[0]);
-            let settore2 = timing.calcolaMinuti(settori[1]);
-            let settore3 = timing.calcolaMinuti(settori[2]);
+            let settore1 = timing.calcolaSecondiSettori(settori[0]);
+            let settore2 = timing.calcolaSecondiSettori(settori[1]);
+            let settore3 = timing.calcolaSecondiSettori(settori[2]);
             let track = obj.trackName;
             let stringa = nome + ";" + cognome + ";" + tempo + ";" + track
             db.run(`INSERT INTO Piloti(nome,cognome,tempo,team,checkDuplicato,settore1,settore2,settore3) VALUES(?,?,?,?,?,?,?,?)`, [nome, cognome, tempo, idmodello, stringa, settore1, settore2, settore3], (err) => { });

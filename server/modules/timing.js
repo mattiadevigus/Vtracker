@@ -26,6 +26,7 @@ class Timing {
                 if (obj.laps[i].isValidForBest === true) {
                     if (obj.laps[i].laptime === settori) {
                         set = obj.laps[i].splits
+                        console.log(set);
                     }
                 }
             }
@@ -40,7 +41,7 @@ class Timing {
     
         let minuti = parseInt(durata / 60);
         durata = durata % (3600);
-        if (minuti == 1) {
+        if (minuti >= 1) {
             secondi = durata - (60 * minuti);
         }else {
             secondi = durata;
@@ -53,6 +54,10 @@ class Timing {
             tot = minuti + ":" + secondi;
         }
         return tot;
+    }
+
+    calcolaSecondiSettori = (secondi) => {
+        return (secondi/1000).toFixed(3);
     }
 }
 

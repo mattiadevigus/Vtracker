@@ -51,9 +51,14 @@ class Timetable extends Component {
                             <h3 id="serverName" className="data"><i className="fas fa-server"></i> <span id="titleState"> Server: </span> <span id="stateText">{this.state.server}</span></h3>
                             <h3 id="track" className="data"><i className="fas fa-road"></i> <span id="titleState"> Track: </span> <span id="stateText">{this.state.track}</span></h3>
                         </div>
-                        <div className="col col-md-4 col-lg-7 align-self-center">
+                        <div className="col col-md-2 col-lg-6 align-self-center">
                         </div>
-                        <div className="col col-md-2 col-lg-1 align-self-center" align="center">
+                        <div align="center" className="col col-md-2 col-lg-1 align-self-center">
+                            <Link to="/Login">
+                                <button className="button-nav"><i style={{ fontSize: "2rem" }} className="fas fa-user button-fix"></i></button>
+                            </Link>
+                        </div>
+                        <div align="center" className="col col-md-2 col-lg-1 align-self-center" align="center">
                             <Link to="/">
                                 <button className="button-nav"><i style={{ fontSize: "2rem" }} className="fas fa-home button-fix"></i></button>
                             </Link>
