@@ -26,7 +26,6 @@ class Timing {
                 if (obj.laps[i].isValidForBest === true) {
                     if (obj.laps[i].laptime === settori) {
                         set = obj.laps[i].splits
-                        console.log(set);
                     }
                 }
             }
@@ -51,7 +50,7 @@ class Timing {
         if (minuti == 0) {
             tot = secondi;
         } else {
-            tot = minuti + ":" + secondi;
+            tot = secondi < 10 ? minuti + ":0" + secondi :  minuti + ":" + secondi;
         }
         return tot;
     }

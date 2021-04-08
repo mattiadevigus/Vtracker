@@ -1,5 +1,5 @@
 {
     "path": "C:\\Users\\matti\\Desktop\\Scottish Gaming League Server\\results",
     "port": 9000,
-    "openBrowserOnStart": false
+    "openBrowserOnStart": true
 }

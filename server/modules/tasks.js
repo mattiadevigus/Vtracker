@@ -3,7 +3,7 @@ const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const db = new sqlite3.Database('public/sqlite/time.db');
-const open = require('open');
+const opener = require('opener');
 const app = express();
 
 const bash = require('./bash');
@@ -51,7 +51,7 @@ class Tasks {
     readOpen = () => {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         let value = directory.openBrowserOnStart;
-        value == true ? open(`http://localhost:${this.getPort()}`) : bash.settingsMessage();
+        value == true ? opener(`http://localhost:${this.getPort()}`) : bash.settingsMessage();
     }
 }
 
