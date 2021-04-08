@@ -53,6 +53,11 @@ class Tasks {
         let value = directory.openBrowserOnStart;
         value == true ? opener(`http://localhost:${this.getPort()}`) : bash.settingsMessage();
     }
+
+    readCredentials = () => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        return directory;
+    }
 }
 
 readDir = () => {
@@ -62,7 +67,7 @@ readDir = () => {
 }
 
 inizio = () => {
-    fs.readdir(directoryPath, function (err, files) {
+    fs.readdir(directoryPath, (err, files) => {
         if (err) {
             return console.log(colors.red('Unable to scan directory: ' + err));
         }
@@ -70,8 +75,10 @@ inizio = () => {
             console.log("----------------------------------------------------------------------------------------------------------------------------------");
             return console.log(colors.red("Server not turned on or results feature not activated.Files not founded"));
         }
-        files.forEach(function (file) {
-            info = applicazione(file);
+        files.forEach((file) => {
+            if(file.indexOf(".json")>-1) {
+                info = applicazione(file);
+            }
         });
     });
 }

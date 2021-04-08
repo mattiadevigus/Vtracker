@@ -58,7 +58,7 @@ class Timetable extends Component {
                                 <button className="button-nav"><i style={{ fontSize: "2rem" }} className="fas fa-user button-fix"></i></button>
                             </Link>
                         </div>
-                        <div align="center" className="col col-md-2 col-lg-1 align-self-center" align="center">
+                        <div align="center" className="col col-md-2 col-lg-1 align-self-center">
                             <Link to="/">
                                 <button className="button-nav"><i style={{ fontSize: "2rem" }} className="fas fa-home button-fix"></i></button>
                             </Link>

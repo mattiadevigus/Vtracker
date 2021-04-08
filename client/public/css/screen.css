@@ -98,7 +98,15 @@ and (max-width : 768px) {
         color: #ffffff;
         transition: .3s;
         font-size: 30px;
-      }
+    }
+
+    .card#panel {
+        background-color: #15151e !important;
+        border: 1px solid white;
+        border-radius: .5rem;
+        transition: .3s;
+        cursor: pointer;
+    }
 
 }
 
@@ -182,6 +190,16 @@ and (min-width : 990px) {
 
     .form-container > img  {
         width: 30%;
+    }
+
+    .card#panel {
+        height: 50%;
+        top: 25%;
+        overflow: hidden;
+    }
+      
+    .card#panel:hover {
+        height: 100%;
     }
 
 }

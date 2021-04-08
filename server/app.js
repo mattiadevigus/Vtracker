@@ -26,7 +26,7 @@ app.post('/', function (req, res) {
   res.send("Tutto ok");
 });
 
-app.get('/Chart/:id', function (req, res) {
+app.get('/Chart/:id', (req, res) => {
   let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Piloti GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Piloti WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC)`;
   db.all(sql, (err, driver) => {
     if (err) {
@@ -40,7 +40,7 @@ app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
-app.post('/App', function (req, res) {
+app.post('/App', (req, res) => {
   let sql = `SELECT *, min(tempo) as tempo FROM Piloti INNER JOIN Macchine ON team = mch_id GROUP BY nome,cognome ORDER BY tempo ASC`;
   db.all(sql, [], (err, rows) => {
     if (err) {
@@ -52,6 +52,17 @@ app.post('/App', function (req, res) {
     res.send({ rows, server, track });
   });
 });
+
+app.post('/Login', (req, res) => {
+  let user = req.body.username;
+  let pass = req.body.password;
+  let x = task.readCredentials();
+  if(user == x.user && pass == x.pass) {
+    res.send(true);
+  }else {
+    res.send(false);
+  }
+})
 
 app.post('/Delete' , (req,res) => {
   task.deleteDB();

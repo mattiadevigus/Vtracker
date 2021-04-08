@@ -1,5 +1,7 @@
 {
     "path": "C:\\Users\\matti\\Desktop\\Scottish Gaming League Server\\results",
     "port": 9000,
-    "openBrowserOnStart": true
+    "openBrowserOnStart": false,
+    "user": "apexitalianracing",
+    "pass": "2021"
 }
