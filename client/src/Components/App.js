@@ -6,6 +6,7 @@ import Login from './Admin/Login'
 import Particles from 'react-particles-js';
 import Chart from './Application/Chart';
 import Panel from './Admin/Panel';
+import Path from './Admin/Pages/Path'
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class App extends React.Component {
             <Route path="/Login" component={() => <Login />} />
             <Route path="/Chart/:id" component={() => <Chart />} />
             <Route path="/Panel" component={() => <Panel />} />
+            <Route path="/Path" component={() => <Path />} />
           </Switch>
         </Router>
       </section>

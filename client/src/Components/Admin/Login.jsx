@@ -13,6 +13,12 @@ class Login extends Component {
         }
     }
 
+    componentDidMount = () => {
+        if(typeof (localStorage.getItem("username")) == 'string') {
+            window.location.replace("/Panel");
+        }
+    }
+
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -20,7 +26,7 @@ class Login extends Component {
     submitHandle = (e) => {
         e.preventDefault();
         axios
-            .post(`http://${Base.getIp()}:9000/Login`, this.state)
+            .post(`http://${Base.getIp()}:${Base.getPort()}/Login`, this.state)
             .then((res) => {
                 if (res.data === true) {
                     localStorage.setItem('username', this.state.username);
@@ -37,7 +43,7 @@ class Login extends Component {
     render() {
         return (
             <div className="form-container w3-animate-zoom">
-                <img className="logo" src="images/v_logo.png" alt="Logo" />
+                <img align="center" className="logo" src="images/v_logo.png" alt="Logo" />
                 <hr />
                 <form method="post" onSubmit={this.submitHandle}>
                     <label htmlFor="quest1">Username:</label>
@@ -53,4 +59,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default Login;
