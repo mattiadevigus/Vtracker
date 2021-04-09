@@ -14,7 +14,7 @@ class Login extends Component {
     }
 
     componentDidMount = () => {
-        if(typeof (localStorage.getItem("username")) == 'string') {
+        if(typeof (sessionStorage.getItem("username")) == 'string') {
             window.location.replace("/Panel");
         }
     }
@@ -29,7 +29,7 @@ class Login extends Component {
             .post(`http://${Base.getIp()}:${Base.getPort()}/Login`, this.state)
             .then((res) => {
                 if (res.data === true) {
-                    localStorage.setItem('username', this.state.username);
+                    sessionStorage.setItem('username', this.state.username);
                     window.location.replace("/Panel");
                 } else {
                     this.setState({ error: "Wrong credentials. Try again" })

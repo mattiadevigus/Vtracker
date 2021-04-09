@@ -14,7 +14,8 @@ class Base {
         let ipv4 = window.location.host;
         let port = ipv4.split(":");
         console.log(port)
-        return port[1];
+        /* return port[1]; */
+        return 9000;
     }
 }
 

@@ -5,6 +5,7 @@ const path = require('path');
 const db = new sqlite3.Database('public/sqlite/time.db');
 const opener = require('opener');
 const app = express();
+const colors = require('colors');
 
 const bash = require('./bash');
 const timing = require('./timing');
@@ -57,6 +58,12 @@ class Tasks {
     readCredentials = () => {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         return directory;
+    }
+
+    updatePath = (path) => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        directory.path = path;
+        fs.writeFileSync('config.json', JSON.stringify(directory));
     }
 }
 

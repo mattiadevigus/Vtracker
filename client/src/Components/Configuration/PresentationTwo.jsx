@@ -32,11 +32,9 @@ class PresentationTwo extends Component {
 
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state)
     }
 
     submitHandle = (e) => {
-        
         e.preventDefault();
         console.log(this.state)
         axios

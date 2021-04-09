@@ -5,9 +5,11 @@ const path = require('path');
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const task = require('./modules/tasks');
+const morgan = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('public/sqlite/time.db');
 const app = express();
+app.use(morgan('tiny'));
 
 task.run();
 task.readOpen();
@@ -54,6 +56,7 @@ app.post('/App', (req, res) => {
 });
 
 app.post('/Login', (req, res) => {
+  console.log("Request login");
   let user = req.body.username;
   let pass = req.body.password;
   let x = task.readCredentials();
@@ -62,11 +65,18 @@ app.post('/Login', (req, res) => {
   }else {
     res.send(false);
   }
-})
+});
 
-app.post('/Delete' , (req,res) => {
+app.post('/Path', (req, res) => {
+  let path = req.body.path;
+  path = path.replace(/\\/g, '\\\\');
+  task.updatePath(path);
+  res.send(true);
+});
+
+app.post('/Reset' , (req,res) => {
   task.deleteDB();
-})
+});
 
 const server = http.createServer(app);
 server.listen(task.getPort());

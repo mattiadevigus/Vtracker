@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 class Panel extends Component {
 
     componentDidMount = () => {
-        console.log(typeof (localStorage.getItem("username")));
-        if (typeof (localStorage.getItem("username")) != 'string') {
+        if (typeof (sessionStorage.getItem("username")) != 'string') {
             window.location.replace("/Login");
         }
     }
@@ -23,8 +22,8 @@ class Panel extends Component {
                         <div className="col-6 col-sm-3 col-lg-3">
                             <Link id="link" to="/Path">
                                 <div id="panel" className="card">
-                                    <div class="card-body">
-                                        <h1 class="card-title"><i className="fas fa-folder-plus"></i></h1>
+                                    <div className="card-body">
+                                        <h1 className="card-title"><i className="fas fa-folder-plus"></i></h1>
                                         <h5>Edit your results folder path</h5>
                                     </div>
                                     <hr className="only-desktop" />
@@ -35,10 +34,10 @@ class Panel extends Component {
                             </Link>
                         </div>
                         <div className="col-6 col-sm-3 col-lg-3">
-                            <Link id="link" to="/Path">
+                            <Link id="link" to="/Reset">
                                 <div id="panel" className="card">
-                                    <div class="card-body">
-                                        <h1 class="card-title"><i className="fas fa-recycle"></i></h1>
+                                    <div className="card-body">
+                                        <h1 className="card-title"><i className="fas fa-recycle"></i></h1>
                                         <h5>Reset Database</h5>
                                     </div>
                                     <hr className="only-desktop" />
@@ -51,12 +50,12 @@ class Panel extends Component {
                         <div className="col-6 col-sm-3 col-lg-3">
                             <Link id="link" to="/Path">
                                 <div id="panel" className="card">
-                                    <div class="card-body">
-                                        <h1 class="card-title"><i className="fas fa-folder-plus"></i></h1>
+                                    <div className="card-body">
+                                        <h1 className="card-title"><i className="fas fa-key"></i></h1>
                                         <h5>Change your credentials</h5>
                                     </div>
                                     <hr className="only-desktop" />
-                                    <div class="card-body only-desktop">
+                                    <div className="card-body only-desktop">
                                         <p>Change your login credentials</p>
                                     </div>
                                 </div>
@@ -65,20 +64,20 @@ class Panel extends Component {
                         <div className="col-6 col-sm-3 col-lg-3">
                         <Link id="link" to="/Path">
                             <div id="panel" className="card">
-                                <div class="card-body">
-                                    <h1 class="card-title"><i class="fas fa-exclamation"></i></h1>
-                                    <h5>Report a problem</h5>
+                                <div className="card-body">
+                                    <h1 className="card-title"><i className="fas fa-exclamation"></i></h1>
+                                    <h5>Your settings</h5>
                                 </div>
                                 <hr className="only-desktop" />
-                                <div class="card-body only-desktop">
-                                    <p>Use this feature to help develop the tracker</p>
+                                <div className="card-body only-desktop">
+                                    <p>Show more information about your configuration</p>
                                 </div>
                             </div>
                             </Link>
                         </div>
                     </div>
                 </div>
-                <Link to="/">
+                <Link to="/App">
                     <div className="panelfoot-container" align="center">
                         <button><i className="fa fa-home"></i></button>
                     </div>
