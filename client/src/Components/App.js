@@ -8,6 +8,8 @@ import Chart from './Application/Chart';
 import Panel from './Admin/Panel';
 import Path from './Admin/Pages/Path';
 import Reset from './Admin/Pages/Reset';
+import Info from './Admin/Pages/Info';
+import Credentials from './Admin/Pages/Credentials'
 
 class App extends React.Component {
   constructor(props) {
@@ -39,6 +41,8 @@ class App extends React.Component {
             <Route path="/Panel" component={() => <Panel />} />
             <Route path="/Path" component={() => <Path />} />
             <Route path="/Reset" component={() => <Reset />} />
+            <Route path="/Info" component={() => <Info />} />
+            <Route path="/Credentials" component={() => <Credentials />} />
           </Switch>
         </Router>
       </section>

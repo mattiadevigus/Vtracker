@@ -9,7 +9,7 @@ class Reset extends Component {
         e.preventDefault();
         axios
             .post(`http://${Base.getIp()}:${Base.getPort()}/Reset`, true);
-        window.location.replace("/Panel");
+        window.location.replace("/Path");
     }
 
     render = () => {

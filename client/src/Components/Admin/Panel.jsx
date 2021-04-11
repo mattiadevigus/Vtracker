@@ -48,7 +48,7 @@ class Panel extends Component {
                             </Link>
                         </div>
                         <div className="col-6 col-sm-3 col-lg-3">
-                            <Link id="link" to="/Path">
+                            <Link id="link" to="/Credentials">
                                 <div id="panel" className="card">
                                     <div className="card-body">
                                         <h1 className="card-title"><i className="fas fa-key"></i></h1>
@@ -62,10 +62,10 @@ class Panel extends Component {
                             </Link>
                         </div>
                         <div className="col-6 col-sm-3 col-lg-3">
-                        <Link id="link" to="/Path">
+                        <Link id="link" to="/Info">
                             <div id="panel" className="card">
                                 <div className="card-body">
-                                    <h1 className="card-title"><i className="fas fa-exclamation"></i></h1>
+                                    <h1 className="card-title"><i className="fas fa-tools"></i></h1>
                                     <h5>Your settings</h5>
                                 </div>
                                 <hr className="only-desktop" />

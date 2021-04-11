@@ -19,10 +19,6 @@ and (max-width : 768px) {
         margin-bottom: 20px;
     }
 
-    button {
-        width: 70%;
-    }
-
     .button-container {
         padding: 20px;
     }
@@ -98,6 +94,7 @@ and (max-width : 768px) {
         color: #ffffff;
         transition: .3s;
         font-size: 30px;
+        width: 60%;
     }
 
     .card#panel {
@@ -117,6 +114,10 @@ and (max-width : 768px) {
 and (max-width : 989px) and (min-width : 769px) {
     section {
         height: calc(var(--vh, 1vh) * 100);
+    }
+
+    button {
+        width: 4rem;
     }
 
     .button-container button {
@@ -153,8 +154,26 @@ and (max-width : 989px) and (min-width : 769px) {
         display: none;
     }
 
+    .form-container {
+        max-width: 40%;
+    }
+
+    .form-container button {
+        width: 20%;
+    }
+
     .form-container > img  {
         width: 50%;
+    }
+
+    .card#panel {
+        height: 50%;
+        top: 25%;
+        overflow: hidden;
+    }
+      
+    .card#panel:hover {
+        height: 100%;
     }
 }
 

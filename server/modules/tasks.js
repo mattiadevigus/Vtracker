@@ -37,6 +37,11 @@ class Tasks {
         });
     }
 
+    getAll = () => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        return directory;
+    }
+
     getPort = () => {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         return directory.port;
@@ -58,6 +63,13 @@ class Tasks {
     readCredentials = () => {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         return directory;
+    }
+
+    writeCredentials = (user, pass) => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        directory.user = user;
+        directory.pass = pass;
+        fs.writeFileSync('config.json', JSON.stringify(directory));
     }
 
     updatePath = (path) => {

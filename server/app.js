@@ -76,7 +76,23 @@ app.post('/Path', (req, res) => {
 
 app.post('/Reset' , (req,res) => {
   task.deleteDB();
+  task.updatePath("");
 });
+
+app.post('/Info', (req, res) => {
+  let info = task.getAll();
+  console.log(info);
+  res.send(info);
+})
+
+app.post('/Credentials', (req,res) => {
+  let user = req.body.username;
+  let pass = req.body.password;
+  console.log(user);
+  task.writeCredentials(user, pass);
+  res.send(true);
+})
+
 
 const server = http.createServer(app);
 server.listen(task.getPort());

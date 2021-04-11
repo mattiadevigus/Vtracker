@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 class Base {
     getIp = () => {
         let ipv4 = window.location.host
