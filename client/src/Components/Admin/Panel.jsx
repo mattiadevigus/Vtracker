@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Base from "../../Modules/Base"
 
 class Panel extends Component {
 
     componentDidMount = () => {
-        if (typeof (sessionStorage.getItem("username")) != 'string') {
-            window.location.replace("/Login");
-        }
+        Base.checkLogin();
     }
 
     render = () => {

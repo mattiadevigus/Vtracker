@@ -13,9 +13,7 @@ class Path extends Component {
     }
 
     componentDidMount = () => {
-        if (typeof (sessionStorage.getItem("username")) != 'string') {
-            window.location.replace("/Login");
-        }
+        Base.checkLogin();
     }
 
     submitHandle = (e) => {

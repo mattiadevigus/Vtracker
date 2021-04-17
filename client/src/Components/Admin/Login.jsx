@@ -12,13 +12,7 @@ class Login extends Component {
             error: "",
         }
     }
-
-    componentDidMount = () => {
-        if(typeof (sessionStorage.getItem("username")) == 'string') {
-            window.location.replace("/Panel");
-        }
-    }
-
+    
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }

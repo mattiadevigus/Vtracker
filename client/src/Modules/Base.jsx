@@ -15,9 +15,20 @@ class Base {
     getPort = () => {
         let ipv4 = window.location.host;
         let port = ipv4.split(":");
-        console.log(port)
         /* return port[1]; */
         return 9000;
+    }
+
+    checkLogin = () => {
+        let params = {
+            username: sessionStorage.getItem("username")
+        }
+        axios.post(`http://${this.getIp()}:${this.getPort()}/Checklogin`, params)
+        .then((res) => {
+            if(res.data !== true) {
+                window.location.replace("/Login");
+            }
+        })
     }
 }
 

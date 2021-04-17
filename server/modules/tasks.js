@@ -1,10 +1,8 @@
-const express = require('express');
 const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const db = new sqlite3.Database('public/sqlite/time.db');
 const opener = require('opener');
-const app = express();
 const colors = require('colors');
 
 const bash = require('./bash');
@@ -76,6 +74,15 @@ class Tasks {
         let directory = JSON.parse(fs.readFileSync('config.json'));
         directory.path = path;
         fs.writeFileSync('config.json', JSON.stringify(directory));
+    }
+
+    checkLogin = (user) => {
+        let directory = JSON.parse(fs.readFileSync('config.json'));
+        if(directory.user === user) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

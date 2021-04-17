@@ -15,6 +15,7 @@ class Info extends Component {
     }
 
     componentDidMount = () => {
+        Base.checkLogin();
         axios
             .post(`http://${Base.getIp()}:${Base.getPort()}/Info`, {
                 request: "requestInfo"

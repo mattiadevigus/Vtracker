@@ -156,6 +156,7 @@ and (max-width : 989px) and (min-width : 769px) {
 
     .form-container {
         max-width: 40%;
+        margin: 0 auto;
     }
 
     .form-container button {

@@ -5,11 +5,10 @@ const path = require('path');
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const task = require('./modules/tasks');
-const morgan = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('public/sqlite/time.db');
 const app = express();
-app.use(morgan('tiny'));
+
 
 task.run();
 task.readOpen();
@@ -29,7 +28,7 @@ app.post('/', function (req, res) {
 });
 
 app.get('/Chart/:id', (req, res) => {
-  let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Piloti GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Piloti WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC)`;
+  let sql = `SELECT * FROM (SELECT *, min(tempo) as tempo FROM Piloti GROUP BY nome,cognome ORDER BY tempo ASC LIMIT 1) UNION SELECT * FROM(SELECT *, min(tempo) as tempo FROM Piloti WHERE id = ${req.params.id}  GROUP BY nome,cognome ORDER BY tempo ASC) ORDER BY tempo ASC`;
   db.all(sql, (err, driver) => {
     if (err) {
       throw err;
@@ -56,7 +55,6 @@ app.post('/App', (req, res) => {
 });
 
 app.post('/Login', (req, res) => {
-  console.log("Request login");
   let user = req.body.username;
   let pass = req.body.password;
   let x = task.readCredentials();
@@ -81,7 +79,6 @@ app.post('/Reset' , (req,res) => {
 
 app.post('/Info', (req, res) => {
   let info = task.getAll();
-  console.log(info);
   res.send(info);
 })
 
@@ -91,6 +88,15 @@ app.post('/Credentials', (req,res) => {
   console.log(user);
   task.writeCredentials(user, pass);
   res.send(true);
+})
+
+app.post('/Checklogin', (req, res) => {
+  let check = task.checkLogin(req.body.username);
+  if(check === false) {
+    res.send(false);
+  } else {
+    res.send(true);
+  }
 })
 
 

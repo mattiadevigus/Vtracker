@@ -14,9 +14,7 @@ class Credentials extends Component {
     }
 
     componentDidMount = () => {
-        if (typeof (sessionStorage.getItem("username")) != 'string') {
-            window.location.replace("/Login");
-        }
+        Base.checkLogin();
     }
 
     changeHandler = (e) => {

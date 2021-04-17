@@ -5,6 +5,10 @@ import Base from '../../../Modules/Base';
 
 class Reset extends Component {
 
+    componentDidMount = () => {
+        Base.checkLogin();
+    }
+
     submitHandle = (e) => {
         e.preventDefault();
         axios
