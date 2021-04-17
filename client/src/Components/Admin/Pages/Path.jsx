@@ -18,7 +18,6 @@ class Path extends Component {
 
     submitHandle = (e) => {
         e.preventDefault();
-        console.log(this.state.path);
         axios
             .post(`http://${Base.getIp()}:9000/Path`, this.state)
             .catch(err => {
@@ -32,7 +31,6 @@ class Path extends Component {
 
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state);
     }
 
     render = () => {

@@ -20,7 +20,6 @@ class Info extends Component {
             .post(`http://${Base.getIp()}:${Base.getPort()}/Info`, {
                 request: "requestInfo"
             }).then((res) => {
-                console.log(res);
                 if(res.data.path === "") res.data.path = "Not configured"; 
                 this.setState({ path: res.data.path, port: res.data.port, openBrowserOnStart: res.data.openBrowserOnStart.toString() });
             })

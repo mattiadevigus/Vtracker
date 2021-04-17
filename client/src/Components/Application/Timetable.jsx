@@ -18,7 +18,6 @@ class Timetable extends Component {
         axios.post(`http://${Base.getIp()}:${Base.getPort()}/App`, {
             request: 'tutto ok'
         }).then((res) => {
-            console.log(res.data.server);
             this.setState({ timetable: res.data.rows, server: res.data.server, track: Base.getFormattedTrackName(res.data.track) });
         });
     }

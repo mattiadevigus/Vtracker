@@ -15,8 +15,8 @@ class Base {
     getPort = () => {
         let ipv4 = window.location.host;
         let port = ipv4.split(":");
-        /* return port[1]; */
-        return 9000;
+        return port[1];
+        /* return 9000; */
     }
 
     checkLogin = () => {
